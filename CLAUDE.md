@@ -24,6 +24,7 @@ git push            # + 진행 현황에 요약 메모 추가
 ```
 
 - GitHub: https://github.com/baekstrong/baekwebpage (`main` 브랜치)
+- **배포 URL: https://masterbaek.vercel.app** (Vercel, `main` push 시 자동배포)
 
 ### 콘텐츠 윤문 (한글 발행 전 마지막 단계)
 - 도구: [im-not-ai / Humanize KR](https://github.com/epoko77-ai/im-not-ai) — Claude Code 스킬 `/humanize-korean`
@@ -157,7 +158,7 @@ SNS 유입(유튜브·스레드·인스타·틱톡) → 칼럼으로 설득 → 
 
 > 작업 시작 시 여기부터 확인. 작업 종료 시 맨 위에 날짜와 요약을 추가.
 
-**현재 단계:** P0 일부 완료 — Next.js 초안(홈/칼럼/상품) 로컬 작동 → **다음: Vercel 배포(백관장 로그인 필요) → Notion 칼럼 연동(P2)**
+**현재 단계:** ✅ P0 완료 — Next.js 초안 **Vercel 배포 완료** (https://masterbaek.vercel.app) → **다음: Notion 칼럼 연동(P2) 또는 자가진단 데모**
 
 ### 완료된 것
 - [x] GitHub 연결 (baekwebpage, `main`)
@@ -171,7 +172,7 @@ SNS 유입(유튜브·스레드·인스타·틱톡) → 칼럼으로 설득 → 
 - [x] **P0 코드: Next.js(App Router/TS) 앱 구성** — `app/`(layout·page·columns·products·globals.css), `components/`(Header·Footer), `public/`(이미지). 시안 CSS 그대로 재사용. `npm run build` 성공, 로컬 `npm run dev` 정상.
 
 ### 다음 할 일
-- [ ] **Vercel 배포** — vercel.com에서 baekwebpage import (백관장 로그인 1회). git push 시 자동배포.
+- [x] **Vercel 배포 완료** → https://masterbaek.vercel.app (검증: 3페이지·이미지·콘텐츠 정상)
 - [ ] Notion Integration 토큰 발급 → P2 칼럼 자동연동
 - [ ] 자가진단 데모 / 문항·결과문 초안
 
@@ -190,4 +191,5 @@ SNS 유입(유튜브·스레드·인스타·틱톡) → 칼럼으로 설득 → 
 
 ### 로그
 - **2026-06-05 (1)** — 프로젝트 시작. GitHub 연결 → 기획(구현계획/자가진단) → 브랜드명 확정 → 디자인 시안(멀티페이지) → 보안·인프라 검토 → 윤문 단계·진행상황 관리 규칙 도입.
-- **2026-06-05 (2)** — P0 진행: 시안을 Next.js(15)로 전환. 홈/칼럼/상품 3페이지 + 공유 Header/Footer 컴포넌트화. 빌드 성공, 로컬 작동 확인. 다음은 Vercel 배포(백관장 로그인 필요).
+- **2026-06-05 (2)** — P0 진행: 시안을 Next.js(15)로 전환. 홈/칼럼/상품 3페이지 + 공유 Header/Footer 컴포넌트화. 빌드 성공, 로컬 작동 확인.
+- **2026-06-05 (3)** — ✅ P0 완료: Vercel 배포(https://masterbaek.vercel.app). 3페이지·이미지·콘텐츠 정상 검증. 이후 main push 시 자동배포.
