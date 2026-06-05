@@ -157,7 +157,7 @@ SNS 유입(유튜브·스레드·인스타·틱톡) → 칼럼으로 설득 → 
 
 > 작업 시작 시 여기부터 확인. 작업 종료 시 맨 위에 날짜와 요약을 추가.
 
-**현재 단계:** 기획·디자인 시안 완료 → **다음: 시안 확정 후 실제 구현(P0) 또는 자가진단 데모**
+**현재 단계:** P0 일부 완료 — Next.js 초안(홈/칼럼/상품) 로컬 작동 → **다음: Vercel 배포(백관장 로그인 필요) → Notion 칼럼 연동(P2)**
 
 ### 완료된 것
 - [x] GitHub 연결 (baekwebpage, `main`)
@@ -168,12 +168,17 @@ SNS 유입(유튜브·스레드·인스타·틱톡) → 칼럼으로 설득 → 
 - [x] 자가진단 미끼 기획 = 5단계 밸류 래더 + 통증 2축 (`자가진단테스트_계획.md`)
 - [x] 보안/Vercel/자체결제/로그인 검토 보고 (2단계 전략: 1차 외부링크 → 2차 Supabase 커머스)
 - [x] 콘텐츠 윤문 단계(`/humanize-korean`) 도입
+- [x] **P0 코드: Next.js(App Router/TS) 앱 구성** — `app/`(layout·page·columns·products·globals.css), `components/`(Header·Footer), `public/`(이미지). 시안 CSS 그대로 재사용. `npm run build` 성공, 로컬 `npm run dev` 정상.
 
-### 다음 할 일 (택1)
-- [ ] 시안 확정 (피드백 반영)
-- [ ] 작동하는 자가진단 데모 제작 (통증 분기 포함)
-- [ ] 문항·결과문 초안 작성 (AI, 백관장 톤)
-- [ ] P0: Next.js 셋업 + Vercel 자동배포
+### 다음 할 일
+- [ ] **Vercel 배포** — vercel.com에서 baekwebpage import (백관장 로그인 1회). git push 시 자동배포.
+- [ ] Notion Integration 토큰 발급 → P2 칼럼 자동연동
+- [ ] 자가진단 데모 / 문항·결과문 초안
+
+### 기술 메모 (P0)
+- 스택: Next.js 15 + React 19 + TypeScript. **Tailwind는 초안에서 미사용** — 승인된 시안 CSS(`app/globals.css`)를 그대로 써서 디자인 1:1 재현·속도 우선. 추후 필요 시 Tailwind 도입 가능.
+- 실행: `npm run dev`(로컬), `npm run build`(빌드). node_modules/.next는 .gitignore 처리.
+- 이미지: `public/`의 logo.png·profile.jpg·hyundai-id.png를 `<img src="/...">`로 참조.
 
 ### 미결정/대기
 - 도메인 미정 (Vercel 임시주소로 시작)
@@ -184,4 +189,5 @@ SNS 유입(유튜브·스레드·인스타·틱톡) → 칼럼으로 설득 → 
 ---
 
 ### 로그
-- **2026-06-05** — 프로젝트 시작. GitHub 연결 → 기획(구현계획/자가진단) → 브랜드명 확정 → 디자인 시안(멀티페이지) → 보안·인프라 검토 → 윤문 단계·진행상황 관리 규칙 도입.
+- **2026-06-05 (1)** — 프로젝트 시작. GitHub 연결 → 기획(구현계획/자가진단) → 브랜드명 확정 → 디자인 시안(멀티페이지) → 보안·인프라 검토 → 윤문 단계·진행상황 관리 규칙 도입.
+- **2026-06-05 (2)** — P0 진행: 시안을 Next.js(15)로 전환. 홈/칼럼/상품 3페이지 + 공유 Header/Footer 컴포넌트화. 빌드 성공, 로컬 작동 확인. 다음은 Vercel 배포(백관장 로그인 필요).
