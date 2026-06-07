@@ -13,7 +13,8 @@ export async function POST(req: NextRequest) {
   }
 
   const email = (body.email ?? "").trim();
-  if (!email || !email.includes("@")) {
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!EMAIL_RE.test(email) || email.length > 254) {
     return Response.json({ ok: false, error: "invalid email" }, { status: 400 });
   }
 
@@ -41,20 +42,22 @@ export async function POST(req: NextRequest) {
         },
         body: JSON.stringify({
           eventOccuredBy: "SUBSCRIBER",
-          confirmEmailYN: "N",
+          // 더블 옵트인: 본인이 확인 메일을 클릭해야 주소록에 추가됨
+          // (제3자가 임의 이메일을 넣어 메일폭탄 하는 것을 방지)
+          confirmEmailYN: "Y",
           subscribers: [subscriber],
         }),
       }
     );
     const data = await res.json().catch(() => ({}));
     if (!res.ok || data?.Ok === false) {
-      return Response.json({ ok: false, error: data }, { status: 502 });
+      // 업스트림 응답은 서버에만 기록하고, 클라이언트엔 일반 메시지만 반환
+      console.error("stibee subscribe failed", data);
+      return Response.json({ ok: false, error: "subscribe failed" }, { status: 502 });
     }
     return Response.json({ ok: true });
   } catch (e) {
-    return Response.json(
-      { ok: false, error: String(e) },
-      { status: 500 }
-    );
+    console.error("subscribe error", e);
+    return Response.json({ ok: false, error: "internal error" }, { status: 500 });
   }
 }
