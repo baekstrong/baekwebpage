@@ -158,7 +158,11 @@ SNS 유입(유튜브·스레드·인스타·틱톡) → 칼럼으로 설득 → 
 
 > 작업 시작 시 여기부터 확인. 작업 종료 시 맨 위에 날짜와 요약을 추가.
 
-**현재 단계:** ✅ P0 완료 — Next.js 초안 **Vercel 배포 완료** (https://masterbaek.vercel.app) → **다음: Notion 칼럼 연동(P2) 또는 자가진단 데모**
+**현재 단계:** 🔧 P2 진행 중 — Notion 칼럼 연동 **코드 작성 완료, 빌드 검증 직전** (재부팅 후 여기부터).
+
+> ⏭️ **재부팅 후 바로 시작:** 터미널에서 `cd "프로젝트폴더" && npm run build` 로 빌드 검증부터.
+> 빌드 통과 → `npm run dev`로 로컬에서 `/columns`·`/columns/gym-first-month` 확인 → 이상 없으면 커밋 → Vercel 환경변수 등록 후 배포.
+> ⚠️ **Vercel 환경변수 2개 등록 필요(배포 전):** `NOTION_TOKEN`, `NOTION_COLUMNS_DS_ID` (값은 로컬 `.env.local` 참고. `.env.local`은 git 제외라 수동 등록).
 
 ### 완료된 것
 - [x] GitHub 연결 (baekwebpage, `main`)
@@ -173,8 +177,32 @@ SNS 유입(유튜브·스레드·인스타·틱톡) → 칼럼으로 설득 → 
 
 ### 다음 할 일
 - [x] **Vercel 배포 완료** → https://masterbaek.vercel.app (검증: 3페이지·이미지·콘텐츠 정상)
-- [ ] Notion Integration 토큰 발급 → P2 칼럼 자동연동
+- [x] Notion Integration 토큰 발급 + DB 연결 (완료, `.env.local` 저장)
+- [ ] ⏭️ **P2 빌드 검증 → 로컬 확인 → 커밋** (재부팅 후 여기부터)
+- [ ] Vercel 환경변수 등록(`NOTION_TOKEN`, `NOTION_COLUMNS_DS_ID`) → 배포
+- [ ] 실제 칼럼 가공(marketingteamforbaek 에이전트로) → 발행
 - [ ] 자가진단 데모 / 문항·결과문 초안
+
+### 🔧 P2 작업 요약 (이번 세션 — 재부팅 후 참고)
+**설계 변경:** "노션 원문 그대로 노출" 폐기 → **AI 1차 가공 → 백관장 감수 → 윤문 → 발행** 구조. 상세 스펙: [`docs/superpowers/specs/2026-06-07-칼럼-콘텐츠-파이프라인-design.md`](./docs/superpowers/specs/2026-06-07-칼럼-콘텐츠-파이프라인-design.md)
+- **이유:** 노션 `발행완료`·`뉴스레터 출력` 글들은 전부 영상 대본·메모 수준이라 사이트에 그대로 못 씀. 재가공 필수.
+- **실제 운영 가공은 `marketingteamforbaek` 레포의 뉴스레터 제작 에이전트로** 한다 (이번 세션의 샘플은 형태 미리보기용).
+
+**만든 것:**
+1. **노션 신규 DB "홈페이지 칼럼"** 생성 — 속성: 제목/요약/slug/상태(초안·감수중·발행완료)/등급(A·B)/날짜
+   - DB id: `d12f20fd785446049fe50cc49ab366bf` / data source id: `1dfe4ef9-09de-42f3-a5f0-8d197b64ea23`
+   - `발행완료` 상태만 사이트 노출 (감수 게이트). 등급 A = 홈 추천.
+2. **토큰 발급 + DB 연결 완료** → `.env.local`에 `NOTION_TOKEN`·`NOTION_COLUMNS_DB_ID`·`NOTION_COLUMNS_DS_ID` 저장 (git 제외). curl 쿼리 테스트 통과.
+3. **샘플 칼럼 1편** DB에 발행완료로 넣음 — "헬스장 처음 가면 런닝머신만 타고 오는 게 정상입니다" (slug: `gym-first-month`, 등급 A).
+4. **연동 코드 작성:**
+   - `lib/notion.ts` — REST API 직접 호출(의존성 0). `getColumns`/`getColumnBySlug`/`getBlocks`/`formatDate`. Notion-Version `2025-09-03`, ISR revalidate 60s.
+   - `components/NotionContent.tsx` — 노션 블록(문단/헤딩/리스트/인용/구분선) → 사이트 디자인 렌더.
+   - `app/columns/page.tsx` — 더미 제거, 노션 연동(추천 A=feature, 나머지=grid).
+   - `app/columns/[slug]/page.tsx` — 신규 상세 페이지(남색 표지 헤더 + 본문 + 하단 상품 CTA).
+   - `app/page.tsx` — 홈 칼럼 섹션도 노션 최신 3편 연동.
+   - `app/globals.css` — 표지 카드(`.fcover`/`.ccover`, 그림 없이 남색+제목) + 상세 본문(`.article*`) 스타일 추가.
+
+**미검증/다음 확인 포인트:** `npm run build` 끝까지 통과 여부(이번 세션엔 빌드 도중 재부팅). 빌드 시 노션 API 호출로 다소 느릴 수 있음 — 멈춘 게 아님.
 
 ### 기술 메모 (P0)
 - 스택: Next.js 15 + React 19 + TypeScript. **Tailwind는 초안에서 미사용** — 승인된 시안 CSS(`app/globals.css`)를 그대로 써서 디자인 1:1 재현·속도 우선. 추후 필요 시 Tailwind 도입 가능.
@@ -193,3 +221,4 @@ SNS 유입(유튜브·스레드·인스타·틱톡) → 칼럼으로 설득 → 
 - **2026-06-05 (1)** — 프로젝트 시작. GitHub 연결 → 기획(구현계획/자가진단) → 브랜드명 확정 → 디자인 시안(멀티페이지) → 보안·인프라 검토 → 윤문 단계·진행상황 관리 규칙 도입.
 - **2026-06-05 (2)** — P0 진행: 시안을 Next.js(15)로 전환. 홈/칼럼/상품 3페이지 + 공유 Header/Footer 컴포넌트화. 빌드 성공, 로컬 작동 확인.
 - **2026-06-05 (3)** — ✅ P0 완료: Vercel 배포(https://masterbaek.vercel.app). 3페이지·이미지·콘텐츠 정상 검증. 이후 main push 시 자동배포.
+- **2026-06-07 (1)** — 🔧 P2 진행: 칼럼 파이프라인 재설계(노션 원문 직접노출 폐기 → AI가공+감수 구조, 스펙 문서화·커밋). 노션 "홈페이지 칼럼" DB 신설 + 토큰 발급/연결 + 샘플 1편 발행완료. 연동 코드 작성 완료(lib/notion·NotionContent·칼럼 목록/상세/홈·표지·본문 CSS). **빌드 검증 직전 재부팅** — 재부팅 후 `npm run build`부터 이어가기. (커밋 아직 안 함, 코드는 디스크 저장됨)

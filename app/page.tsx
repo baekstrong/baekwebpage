@@ -1,8 +1,12 @@
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { getColumns } from "@/lib/notion";
 
-export default function Home() {
+export const revalidate = 60; // ISR
+
+export default async function Home() {
+  const homeCols = (await getColumns()).slice(0, 3);
   return (
     <>
       <Header />
@@ -95,33 +99,18 @@ export default function Home() {
             </Link>
           </div>
           <div className="grid3">
-            <Link className="col-card" href="/columns">
-              <div className="tag">★ 추천</div>
-              <h3>바쁜 직장인은 무분할이 답입니다</h3>
-              <p className="excerpt">
-                시간 없는 사람일수록 &apos;분할 운동&apos;은 독이 됩니다. 주 2~3회로
-                온몸을 단련하는 가장 현실적인 방법.
+            {homeCols.length === 0 && (
+              <p style={{ padding: 24, color: "var(--gray70)" }}>
+                칼럼을 준비 중입니다.
               </p>
-              <div className="read">읽어보기 →</div>
-            </Link>
-            <Link className="col-card" href="/columns">
-              <div className="tag">★ 추천</div>
-              <h3>퇴근 후에는 왜 운동하기가 싫을까?</h3>
-              <p className="excerpt">
-                의지의 문제가 아닙니다. 체력이 바닥난 뇌의 당연한 반응이죠. 이
-                악순환을 끊는 단 하나의 스위치.
-              </p>
-              <div className="read">읽어보기 →</div>
-            </Link>
-            <Link className="col-card" href="/columns">
-              <div className="tag">★ 추천</div>
-              <h3>30분 달리기가 당신의 몸을 망친다</h3>
-              <p className="excerpt">
-                유산소만 하다 무릎 나간 직장인이 한둘이 아닙니다. 체력의 진짜
-                토대는 &apos;힘&apos;에서 시작됩니다.
-              </p>
-              <div className="read">읽어보기 →</div>
-            </Link>
+            )}
+            {homeCols.map((c) => (
+              <Link className="col-card" key={c.id} href={`/columns/${c.slug}`}>
+                <div className="ccover">{c.title}</div>
+                <p className="excerpt">{c.summary}</p>
+                <div className="read">읽어보기 →</div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
