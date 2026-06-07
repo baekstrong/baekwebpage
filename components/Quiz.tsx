@@ -71,6 +71,7 @@ export default function Quiz() {
   const [painGiveup, setPainGiveup] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [emailDone, setEmailDone] = useState(false);
+  const [sending, setSending] = useState(false);
 
   const allAnswered =
     answers.every((a) => a !== null) &&
@@ -83,6 +84,28 @@ export default function Quiz() {
     (painAreas.length > 0 && !(painAreas.length === 1 && painAreas[0] === "없음")) ||
     (painFreq !== null && painFreq !== "없음");
   const type = getType(score);
+
+  async function handleEmail(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const input = e.currentTarget.elements.namedItem("email") as HTMLInputElement;
+    const email = input?.value ?? "";
+    setSending(true);
+    try {
+      await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          fitnessType: hasPain ? null : type.name,
+          hasPain,
+        }),
+      });
+    } catch {
+      // 네트워크 실패해도 사용자 경험은 완료로 (수집 실패는 서버 로그로 추적)
+    }
+    setSending(false);
+    setEmailDone(true);
+  }
 
   function toggleArea(area: string) {
     setPainAreas((prev) => {
@@ -116,16 +139,10 @@ export default function Quiz() {
               </p>
 
               {!emailDone ? (
-                <form
-                  className="quiz-email"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setEmailDone(true);
-                  }}
-                >
-                  <input type="email" required placeholder="이메일 주소" />
-                  <button type="submit" className="btn btn-primary">
-                    출시 알림 받기 →
+                <form className="quiz-email" onSubmit={handleEmail}>
+                  <input type="email" name="email" required placeholder="이메일 주소" />
+                  <button type="submit" className="btn btn-primary" disabled={sending}>
+                    {sending ? "신청 중…" : "출시 알림 받기 →"}
                   </button>
                 </form>
               ) : (
@@ -161,20 +178,15 @@ export default function Quiz() {
               </div>
 
               {!emailDone ? (
-                <form
-                  className="quiz-email"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setEmailDone(true);
-                  }}
-                >
+                <form className="quiz-email" onSubmit={handleEmail}>
                   <input
                     type="email"
+                    name="email"
                     required
                     placeholder="이메일 주소"
                   />
-                  <button type="submit" className="btn btn-primary">
-                    전체 리포트 + 맞춤 루틴 받기 →
+                  <button type="submit" className="btn btn-primary" disabled={sending}>
+                    {sending ? "신청 중…" : "전체 리포트 + 맞춤 루틴 받기 →"}
                   </button>
                 </form>
               ) : (
