@@ -27,11 +27,11 @@ export default async function Home() {
               운동량이 아니라 <b>원리</b>입니다. 백관장이 그 길을 안내합니다.
             </p>
             <div className="hero-cta">
-              <Link className="btn btn-primary" href="/columns">
-                체력향상 칼럼 보기 →
+              <Link className="btn btn-primary" href="/quiz">
+                1분 체력 자가진단 →
               </Link>
-              <Link className="btn btn-ghost" href="/products">
-                상품 둘러보기
+              <Link className="btn btn-ghost" href="/columns">
+                체력향상 칼럼 보기
               </Link>
             </div>
             <div className="stats">

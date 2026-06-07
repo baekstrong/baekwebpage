@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-type Props = { active?: "columns" | "products" };
+type Props = { active?: "columns" | "products" | "quiz" };
 
 export default function Header({ active }: Props) {
   return (
@@ -17,11 +17,14 @@ export default function Header({ active }: Props) {
           <Link href="/products" className={active === "products" ? "active" : undefined}>
             상품
           </Link>
+          <Link href="/quiz" className={active === "quiz" ? "active" : undefined}>
+            자가진단
+          </Link>
           <Link href="/#origin">소개</Link>
           <Link href="/#sns">문의</Link>
         </nav>
-        <Link className="nav-cta" href="/products">
-          상품 보기 →
+        <Link className="nav-cta" href="/quiz">
+          체력 자가진단 →
         </Link>
       </div>
     </header>
