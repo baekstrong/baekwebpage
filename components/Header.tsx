@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-type Props = { active?: "columns" | "products" | "quiz" };
+type Props = { active?: "columns" | "products" | "quiz" | "about" };
 
 export default function Header({ active }: Props) {
   return (
@@ -20,7 +20,9 @@ export default function Header({ active }: Props) {
           <Link href="/quiz" className={active === "quiz" ? "active" : undefined}>
             자가진단
           </Link>
-          <Link href="/#origin">소개</Link>
+          <Link href="/about" className={active === "about" ? "active" : undefined}>
+            소개
+          </Link>
           <Link href="/#sns">문의</Link>
         </nav>
         <Link className="nav-cta" href="/quiz">

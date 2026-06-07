@@ -81,6 +81,13 @@ export default async function Home() {
               백관장의 체력 상담소입니다.
             </p>
             <div className="sign">— 백관장 (백승덕)</div>
+            <Link
+              className="more"
+              href="/about"
+              style={{ color: "#6ea8ff", display: "inline-block", marginTop: 24 }}
+            >
+              백관장 이야기 전체 보기 →
+            </Link>
           </div>
         </div>
       </section>

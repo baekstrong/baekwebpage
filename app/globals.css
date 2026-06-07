@@ -150,6 +150,46 @@ section.block{padding:88px 0;}
 .prod .via b{color:var(--navy);}
 .prod .buy{font-weight:600;color:var(--navy);border-top:1px solid var(--gray30);padding-top:16px;}
 
+/* ── About (백관장 이야기) ── */
+.ab-narrow{max-width:760px;}
+.ab-h2{font-size:30px;font-weight:700;line-height:1.3;letter-spacing:-.01em;margin:10px 0 24px;}
+.ab-hero{background:var(--ink);color:#fff;padding:80px 0;}
+.ab-hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:48px;align-items:center;}
+.ab-hero h1{font-size:46px;font-weight:700;line-height:1.18;letter-spacing:-.02em;margin-bottom:24px;}
+.ab-hero h1 .hl{color:#6ea8ff;}
+.ab-lead{font-size:19px;line-height:1.7;color:#c6c6c6;max-width:560px;}
+.ab-hero-img img{width:100%;display:block;border:6px solid #fff;}
+.ab-narrow p{font-size:18px;line-height:1.85;color:var(--ink);margin-bottom:20px;}
+.ab-narrow b{font-weight:600;color:var(--navy);}
+.ab-pain{list-style:none;margin:0 0 24px;}
+.ab-pain li{font-size:18px;line-height:1.6;padding:14px 0 14px 32px;position:relative;border-bottom:1px solid var(--gray30);}
+.ab-pain li::before{content:"✓";position:absolute;left:0;color:var(--red);font-weight:700;}
+/* 스토리 (남색 배경) */
+.ab-story{background:var(--navy);}
+.ab-story .ab-narrow p{color:#dce7f7;}
+.ab-story .ab-narrow b{color:#fff;}
+.ab-id{display:block;width:260px;max-width:60%;margin:8px 0 28px;border:6px solid #fff;}
+/* 원칙 카드 */
+.ab-principles{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:880px;margin:0 auto;}
+.ab-card{background:#fff;border:1px solid var(--gray30);padding:28px;}
+.ab-card-n{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:12px;}
+.ab-card p{font-size:16px;line-height:1.7;color:var(--gray70);}
+/* 숫자 증거 */
+.ab-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--gray30);border:1px solid var(--gray30);}
+.ab-stat{background:#fff;padding:32px 16px;text-align:center;}
+.ab-stat .num{font-size:34px;font-weight:700;color:var(--navy);line-height:1;}
+.ab-stat .lab{font-size:14px;color:var(--gray70);margin-top:10px;}
+.ab-books{text-align:center;margin-top:24px;font-size:15px;color:var(--gray70);}
+.ab-books span{font-weight:600;color:var(--navy);margin-right:6px;}
+@media(max-width:900px){
+  .ab-hero-grid{grid-template-columns:1fr;}
+  .ab-hero-img{order:-1;max-width:300px;}
+  .ab-hero h1{font-size:34px;}
+  .ab-h2{font-size:24px;}
+  .ab-principles,.ab-stats{grid-template-columns:1fr;}
+  .ab-stats{gap:1px;}
+}
+
 /* ── Product detail ── */
 .product-hero{background:var(--navy);color:#fff;padding:56px 0;}
 .product-hero .back{display:inline-block;color:#cdddf7;font-size:14px;font-weight:600;margin-bottom:24px;}
