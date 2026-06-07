@@ -158,11 +158,12 @@ SNS 유입(유튜브·스레드·인스타·틱톡) → 칼럼으로 설득 → 
 
 > 작업 시작 시 여기부터 확인. 작업 종료 시 맨 위에 날짜와 요약을 추가.
 
-**현재 단계:** 🔧 P2 진행 중 — Notion 칼럼 연동 **코드 작성 완료, 빌드 검증 직전** (재부팅 후 여기부터).
+**현재 단계:** ✅ **P2 완료** — Notion 칼럼 연동 + **라이브 배포 완료** (https://masterbaek.vercel.app/columns). 다음: 실제 칼럼 가공(marketingteamforbaek)·발행 또는 P3(상품 상세)/P6(자가진단).
 
-> ⏭️ **재부팅 후 바로 시작:** 터미널에서 `cd "프로젝트폴더" && npm run build` 로 빌드 검증부터.
-> 빌드 통과 → `npm run dev`로 로컬에서 `/columns`·`/columns/gym-first-month` 확인 → 이상 없으면 커밋 → Vercel 환경변수 등록 후 배포.
-> ⚠️ **Vercel 환경변수 2개 등록 필요(배포 전):** `NOTION_TOKEN`, `NOTION_COLUMNS_DS_ID` (값은 로컬 `.env.local` 참고. `.env.local`은 git 제외라 수동 등록).
+> ✅ Vercel 환경변수 등록 완료(`NOTION_TOKEN`·`NOTION_COLUMNS_DS_ID` — Production·Development. Preview는 미등록, 필요시 대시보드에서 보충).
+> ✅ 자동배포 연결됨 — `main` push 시 Vercel 프로덕션 자동배포(검증 통과).
+> 🔁 운영: 노션 "홈페이지 칼럼" DB에서 글을 `발행완료`로 바꾸면 ISR(60s) 주기로 사이트 자동 반영(재배포 불필요).
+> 🔒 **TODO(보안):** 셋업 중 토큰이 채팅에 1회 노출됨 → 노션에서 토큰 재발급 후 `.env.local`·Vercel 값 교체 권장.
 
 ### 완료된 것
 - [x] GitHub 연결 (baekwebpage, `main`)
@@ -178,10 +179,11 @@ SNS 유입(유튜브·스레드·인스타·틱톡) → 칼럼으로 설득 → 
 ### 다음 할 일
 - [x] **Vercel 배포 완료** → https://masterbaek.vercel.app (검증: 3페이지·이미지·콘텐츠 정상)
 - [x] Notion Integration 토큰 발급 + DB 연결 (완료, `.env.local` 저장)
-- [ ] ⏭️ **P2 빌드 검증 → 로컬 확인 → 커밋** (재부팅 후 여기부터)
-- [ ] Vercel 환경변수 등록(`NOTION_TOKEN`, `NOTION_COLUMNS_DS_ID`) → 배포
-- [ ] 실제 칼럼 가공(marketingteamforbaek 에이전트로) → 발행
-- [ ] 자가진단 데모 / 문항·결과문 초안
+- [x] **P2 빌드 검증 → 로컬 확인 → 커밋** (빌드 7/7 성공, 로컬·라이브 렌더 검증)
+- [x] **Vercel 환경변수 등록 + 배포** (vercel CLI로 link·env·배포. 라이브 검증 통과)
+- [ ] ⏭️ **실제 칼럼 가공(marketingteamforbaek 에이전트로) → 발행** (다음 1순위)
+- [ ] (선택) 토큰 재발급 — 보안 TODO
+- [ ] P3 상품 상세 / P6 자가진단 데모 / 문항·결과문 초안
 
 ### 🔧 P2 작업 요약 (이번 세션 — 재부팅 후 참고)
 **설계 변경:** "노션 원문 그대로 노출" 폐기 → **AI 1차 가공 → 백관장 감수 → 윤문 → 발행** 구조. 상세 스펙: [`docs/superpowers/specs/2026-06-07-칼럼-콘텐츠-파이프라인-design.md`](./docs/superpowers/specs/2026-06-07-칼럼-콘텐츠-파이프라인-design.md)
@@ -222,3 +224,4 @@ SNS 유입(유튜브·스레드·인스타·틱톡) → 칼럼으로 설득 → 
 - **2026-06-05 (2)** — P0 진행: 시안을 Next.js(15)로 전환. 홈/칼럼/상품 3페이지 + 공유 Header/Footer 컴포넌트화. 빌드 성공, 로컬 작동 확인.
 - **2026-06-05 (3)** — ✅ P0 완료: Vercel 배포(https://masterbaek.vercel.app). 3페이지·이미지·콘텐츠 정상 검증. 이후 main push 시 자동배포.
 - **2026-06-07 (1)** — 🔧 P2 진행: 칼럼 파이프라인 재설계(노션 원문 직접노출 폐기 → AI가공+감수 구조, 스펙 문서화·커밋). 노션 "홈페이지 칼럼" DB 신설 + 토큰 발급/연결 + 샘플 1편 발행완료. 연동 코드 작성 완료(lib/notion·NotionContent·칼럼 목록/상세/홈·표지·본문 CSS). **빌드 검증 직전 재부팅** — 재부팅 후 `npm run build`부터 이어가기. (커밋 아직 안 함, 코드는 디스크 저장됨)
+- **2026-06-07 (2)** — ✅ **P2 완료**: 재부팅 후 빌드 검증(7/7 성공) → 로컬 렌더 확인 → 칼럼 하단 CTA 문구 완화(판매색 제거) → 커밋(`6069bd1`). vercel CLI(npx)로 프로젝트 link + 환경변수 등록(`NOTION_TOKEN`·`NOTION_COLUMNS_DS_ID`, Prod·Dev) + `main` push 자동배포. 라이브(https://masterbaek.vercel.app/columns) 목록·상세·홈·완화 CTA 전부 검증 통과. **노션 칼럼 → 사이트 자동연동 실운영 가동.**
