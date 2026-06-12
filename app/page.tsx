@@ -6,7 +6,8 @@ import { getColumns } from "@/lib/notion";
 export const revalidate = 60; // ISR
 
 export default async function Home() {
-  const homeCols = (await getColumns()).slice(0, 3);
+  const cols = await getColumns();
+  const homeCols = cols.slice(0, 3);
   return (
     <>
       <Header />
@@ -41,10 +42,10 @@ export default async function Home() {
               </div>
               <div className="stat">
                 <div className="num">534+</div>
-                <div className="lab">콘텐츠</div>
+                <div className="lab">유튜브 영상</div>
               </div>
               <div className="stat">
-                <div className="num">78편</div>
+                <div className="num">{cols.length}편</div>
                 <div className="lab">체력 칼럼</div>
               </div>
             </div>
@@ -177,10 +178,41 @@ export default async function Home() {
           <h2>직장인에게, 힘을!</h2>
           <p>유튜브 · 스레드 · 인스타 · 틱톡에서 매일 만나요.</p>
           <div className="sns">
-            <a href="#">YouTube</a>
-            <a href="#">Threads</a>
-            <a href="#">Instagram</a>
-            <a href="#">TikTok</a>
+            <a
+              href="https://www.youtube.com/@easystrength101"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              YouTube
+            </a>
+            <a
+              href="https://www.instagram.com/easystrength101/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram
+            </a>
+            <a
+              href="https://www.threads.com/@easystrength101"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Threads
+            </a>
+            <a
+              href="https://www.tiktok.com/@easystrength101"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              TikTok
+            </a>
+            <a
+              href="https://blog.naver.com/qortmdejr123"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              블로그
+            </a>
           </div>
         </div>
       </section>

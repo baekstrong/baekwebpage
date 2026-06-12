@@ -12,7 +12,12 @@ export default function Footer() {
           </p>
         </div>
         <div>
-          <p>문의: easystrength@email.com</p>
+          <p>
+            문의:{" "}
+            <a href="mailto:qortmdejr123@naver.com" style={{ color: "inherit" }}>
+              qortmdejr123@naver.com
+            </a>
+          </p>
           <p style={{ marginTop: 8 }}>
             © 2026 백관장의 체력 상담소. All rights reserved.
           </p>
