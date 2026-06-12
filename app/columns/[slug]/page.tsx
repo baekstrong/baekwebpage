@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import NotionContent from "@/components/NotionContent";
+import SubscribeForm from "@/components/SubscribeForm";
 import {
   getColumns,
   getColumnBySlug,
@@ -29,6 +30,11 @@ export async function generateMetadata({
   return {
     title: `${col.title} — 백관장의 체력 상담소`,
     description: col.summary,
+    openGraph: {
+      type: "article",
+      title: col.title,
+      description: col.summary,
+    },
   };
 }
 
@@ -62,6 +68,9 @@ export default async function ColumnDetail({
           <NotionContent blocks={blocks} />
         </div>
       </article>
+
+      {/* 뉴스레터 구독 */}
+      <SubscribeForm />
 
       {/* 하단 상품 CTA */}
       <section className="cta-band">

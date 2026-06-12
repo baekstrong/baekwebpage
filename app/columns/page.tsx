@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getColumns, formatDate } from "@/lib/notion";
+import SubscribeForm from "@/components/SubscribeForm";
 
 export const revalidate = 60; // ISR
 
@@ -68,6 +69,9 @@ export default async function Columns() {
           )}
         </div>
       </section>
+
+      {/* 뉴스레터 구독 */}
+      <SubscribeForm />
 
       {/* CTA */}
       <section className="cta-band">

@@ -80,7 +80,7 @@ export default function Products() {
               </p>
               <Link
                 className="buy"
-                href="/#sns"
+                href="/contact"
                 style={{ borderColor: "rgba(255,255,255,.3)", color: "#fff" }}
               >
                 상담 신청 →

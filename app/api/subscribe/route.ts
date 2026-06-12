@@ -29,7 +29,10 @@ export async function POST(req: NextRequest) {
   // 스티비 주소록 커스텀 필드("체력유형","통증여부")가 있으면 함께 저장됨
   const subscriber: Record<string, string> = { email };
   if (body.fitnessType) subscriber["체력유형"] = body.fitnessType;
-  subscriber["통증여부"] = body.hasPain ? "있음" : "없음";
+  // 자가진단을 거치지 않은 일반 구독(뉴스레터 폼)은 통증여부를 기록하지 않음
+  if (typeof body.hasPain === "boolean") {
+    subscriber["통증여부"] = body.hasPain ? "있음" : "없음";
+  }
 
   try {
     const res = await fetch(

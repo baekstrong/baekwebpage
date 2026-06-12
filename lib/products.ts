@@ -30,7 +30,7 @@ export const PRODUCTS: Product[] = [
     categoryLabel: "온라인 · 혼자서 시작",
     short: "직장인 체력의 핵심 원리를 한 권에 압축. 가장 빠르고 저렴하게 시작하는 방법.",
     via: "리틀리",
-    buyUrl: "https://litt.ly/easystrength",
+    buyUrl: "https://litt.ly/easystrength/sale/4Jejn8C",
     buyLabel: "구매하기",
     available: true,
     tagline: "직장인 체력의 핵심 원리를 한 권에",
@@ -47,6 +47,35 @@ export const PRODUCTS: Product[] = [
     detail: [
       "헬스장에 가도 뭘 해야 할지 모르겠고, 유튜브 영상을 봐도 막상 따라 하기 어려운 분들을 위해 만들었습니다. 운동 종류를 늘어놓는 책이 아니라, 왜 지치는지·무엇부터 바꿔야 하는지 원리를 정리한 책입니다.",
       "한 번에 다 하려다 작심삼일로 끝나지 않도록, 직장인이 현실적으로 지킬 수 있는 최소 단위부터 안내합니다. 가장 빠르고 부담 없이 시작할 수 있는 첫걸음입니다.",
+    ],
+  },
+  {
+    id: "book-survival",
+    icon: "📖",
+    name: "저서 《최소한의 생존 체력 운동》",
+    price: "₩ 19,800",
+    category: "online",
+    categoryLabel: "온라인 · 혼자서 시작",
+    short:
+      "정식 출간 저서. 체력이 무너진 직장인을 위한 최소 단위의 생존 운동법.",
+    via: "교보문고",
+    buyUrl: "https://product.kyobobook.co.kr/detail/S000217485975",
+    buyLabel: "교보문고에서 구매",
+    available: true,
+    tagline: "출판사를 거쳐 정식 출간된, 생존을 위한 최소한의 운동",
+    forWho: [
+      "운동할 시간도 기력도 없다고 느끼는 직장인",
+      "헬스장 등록 전에, 책으로 먼저 원리를 잡고 싶은 분",
+      "부모님·동료에게 선물할 운동 입문서를 찾는 분",
+    ],
+    includes: [
+      "체력이 무너지는 원인과 회복의 원리",
+      "바쁜 일상에서도 지킬 수 있는 최소 단위 운동법",
+      "단계별로 따라가는 생존 체력 루틴",
+    ],
+    detail: [
+      "백관장이 정식 출판사를 통해 펴낸 저서입니다. 유튜브와 근력학교에서 수백 명의 직장인을 가르치며 다듬은 내용을, 운동을 전혀 모르는 사람도 따라올 수 있게 정리했습니다.",
+      "종이책은 교보문고에서, eBook판도 함께 구매할 수 있습니다.",
     ],
   },
   {

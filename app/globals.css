@@ -289,3 +289,15 @@ footer{background:var(--ink);color:#9b9b9b;padding:56px 24px;font-size:14px;}
   .stats{gap:24px;}
   .menu{display:none;}
 }
+
+/* ---------- 뉴스레터 구독 밴드 ---------- */
+.subscribe-band{background:var(--navy-tint);padding:64px 0;}
+.subscribe-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+.subscribe-inner h2{font-size:26px;font-weight:600;margin-bottom:8px;}
+.subscribe-inner>div>p{color:var(--gray70);}
+.subscribe-inner .quiz-email{margin:0;}
+.subscribe-done{font-weight:600;color:var(--navy);}
+.subscribe-err{margin-top:10px;font-size:14px;color:var(--red);}
+@media (max-width:768px){
+  .subscribe-inner{grid-template-columns:1fr;gap:24px;}
+}
