@@ -2,12 +2,15 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getColumns } from "@/lib/notion";
+import Reviews from "@/components/Reviews";
+import { getFeaturedReviews } from "@/lib/reviews";
 
 export const revalidate = 60; // ISR
 
 export default async function Home() {
   const cols = await getColumns();
   const homeCols = cols.slice(0, 3);
+  const reviews = getFeaturedReviews();
   return (
     <>
       <Header />
@@ -123,8 +126,15 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* REVIEWS */}
+      <Reviews
+        reviews={reviews}
+        title="이미 수백 명이 강해졌습니다"
+        subtitle="네이버 지도와 스마트스토어에 올라온 실제 수강생 후기입니다."
+      />
+
       {/* PRODUCTS */}
-      <section className="block prod-bg" id="products">
+      <section className="block" id="products">
         <div className="wrap">
           <div className="sec-head">
             <div>

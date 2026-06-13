@@ -301,3 +301,37 @@ footer{background:var(--ink);color:#9b9b9b;padding:56px 24px;font-size:14px;}
 @media (max-width:768px){
   .subscribe-inner{grid-template-columns:1fr;gap:24px;}
 }
+
+/* ---------- 수강생 후기 ---------- */
+.review-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px;
+}
+.review-card{
+  background:#fff;border:1px solid var(--gray30);padding:28px 24px;margin:0;
+  display:flex;flex-direction:column;
+}
+.review-stars{color:#f5a623;font-size:15px;letter-spacing:2px;margin-bottom:14px;}
+.review-tag{
+  display:inline-block;align-self:flex-start;font-size:12px;font-weight:600;
+  color:var(--navy);background:var(--navy-tint);padding:4px 10px;margin-bottom:14px;
+}
+.review-card blockquote{
+  margin:0 0 20px;font-size:15.5px;line-height:1.75;color:var(--ink);flex:1;
+  word-break:keep-all;
+}
+.review-card figcaption{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;
+  padding-top:16px;border-top:1px solid var(--gray10);
+}
+.review-author{font-weight:600;font-size:14px;}
+.review-meta{font-size:13px;color:var(--gray70);}
+.review-source{
+  margin-left:auto;font-size:11px;color:var(--gray70);
+  border:1px solid var(--gray30);padding:2px 8px;white-space:nowrap;
+}
+@media (max-width:900px){
+  .review-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:600px){
+  .review-grid{grid-template-columns:1fr;}
+}

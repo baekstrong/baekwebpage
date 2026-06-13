@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { PRODUCTS, getProduct } from "@/lib/products";
+import Reviews from "@/components/Reviews";
+import { getReviewsByProduct } from "@/lib/reviews";
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ id: p.id }));
@@ -35,6 +37,12 @@ export default async function ProductDetail({
   const related = PRODUCTS.filter(
     (x) => x.id !== p.id && x.category === p.category
   ).slice(0, 2);
+
+  // 이 상품에 대한 실제 후기 (근력학교·원데이만 보유)
+  const reviews =
+    p.id === "school" || p.id === "oneday"
+      ? getReviewsByProduct(p.id)
+      : [];
 
   return (
     <>
@@ -132,6 +140,19 @@ export default async function ProductDetail({
           </section>
         )}
       </article>
+
+      {/* 이 상품 후기 */}
+      {reviews.length > 0 && (
+        <Reviews
+          reviews={reviews}
+          title="실제 수강생 후기"
+          subtitle={
+            p.id === "school"
+              ? "네이버 지도에 올라온 근력학교 수강생 후기입니다."
+              : "스마트스토어에 올라온 케틀벨 원데이 클래스 후기입니다."
+          }
+        />
+      )}
 
       {/* CTA */}
       <section className="cta-band">

@@ -136,8 +136,8 @@ export const PRODUCTS: Product[] = [
     category: "offline",
     categoryLabel: "오프라인 · 직접 배우기",
     short: "하루 만에 핵심 자세와 원리를 몸으로 익히는 오프라인 집중 수업.",
-    via: "스마트스토어",
-    buyUrl: null, // TODO: 스마트스토어 상품 URL
+    via: "온라인 신청",
+    buyUrl: "https://baekstrong.github.io/productdetailpage/",
     buyLabel: "신청하기",
     available: true,
     tagline: "하루 만에 핵심 자세를 몸으로",
@@ -164,9 +164,9 @@ export const PRODUCTS: Product[] = [
     category: "offline",
     categoryLabel: "오프라인 · 직접 배우기",
     short: "체계적으로 강해지는 정규 과정. 직장인을 위해 설계된 단계별 커리큘럼.",
-    via: "스마트스토어",
-    buyUrl: null, // TODO: 스마트스토어 상품 URL
-    buyLabel: "신청하기",
+    via: "온라인 신청",
+    buyUrl: "https://baekstrong.github.io/timetablemanager/?register=true",
+    buyLabel: "수강 신청하기",
     available: true,
     tagline: "체계적으로 강해지는 정규 과정",
     forWho: [
