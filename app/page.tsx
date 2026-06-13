@@ -147,34 +147,36 @@ export default async function Home() {
             </Link>
           </div>
           <div className="grid-prod">
-            <Link className="prod" href="/products">
+            <Link className="prod" href="/products/ebook">
               <div className="icon">📘</div>
-              <h3>전자책</h3>
+              <h3>전자책 《케틀벨 체력 솔루션》</h3>
               <p className="desc">
-                직장인 체력의 핵심 원리를 한 권에. 가장 빠르게 시작하는 방법.
+                직장인을 위한 케틀벨 체력 솔루션. 9,900원으로 시작하는 첫걸음.
               </p>
               <div className="via">
                 결제: <b>리틀리</b>
               </div>
               <div className="buy">구매하기 →</div>
             </Link>
-            <Link className="prod" href="/products">
-              <div className="icon">🎬</div>
-              <h3>온라인 강의</h3>
+            <Link className="prod" href="/products/oneday">
+              <div className="icon">📅</div>
+              <h3>케틀벨 원데이 클래스</h3>
               <p className="desc">
-                10편 이하 핵심만. 출퇴근길에 보고 바로 적용하는 압축 강의.
+                케틀벨 기본기와 방향을 하루 3시간 만에. 초보 환영 소규모 수업.
               </p>
-              <div className="via">결제: 준비 중</div>
-              <div className="buy">자세히 →</div>
+              <div className="via">
+                신청: <b>온라인 신청</b>
+              </div>
+              <div className="buy">예약 일정 보기 →</div>
             </Link>
-            <Link className="prod" href="/products">
+            <Link className="prod" href="/products/school">
               <div className="icon">🎓</div>
               <h3>근력학교 정규수업</h3>
               <p className="desc">
-                체계적으로 강해지는 정규 과정. 직장인을 위한 커리큘럼.
+                직장인 체력 향상 3단계 프로세스. 주 2회 3시간 정규 과정.
               </p>
               <div className="via">
-                결제: <b>스마트스토어</b>
+                신청: <b>온라인 신청</b>
               </div>
               <div className="buy">신청하기 →</div>
             </Link>
