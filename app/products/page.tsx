@@ -21,8 +21,8 @@ export default function Products() {
           <span className="eyebrow">PRODUCTS</span>
           <h1>백관장의 상품</h1>
           <p>
-            읽고 끝나지 마세요. 단계에 맞게 골라 직접 강해지세요. 입문은 전자책부터,
-            깊이 있는 변화는 정규수업으로.
+            읽고 끝내지 마세요. 단계에 맞게 골라 직접 강해지면 됩니다. 입문은
+            전자책부터, 제대로 바꾸려면 정규수업으로.
           </p>
         </div>
       </section>
@@ -71,12 +71,12 @@ export default function Products() {
                 textAlign: "center",
               }}
             >
-              <h3 style={{ color: "#fff", fontSize: 22 }}>어떤 게 나에게 맞을까?</h3>
+              <h3 style={{ color: "#fff", fontSize: 22 }}>나한테 맞는 건 뭘까?</h3>
               <p
                 className="desc"
                 style={{ color: "#cdddf7", flex: "none", marginBottom: 24 }}
               >
-                체력 수준과 목표에 맞는 상품을 추천해드립니다.
+                체력 수준과 목표에 맞는 상품을 골라드립니다.
               </p>
               <Link
                 className="buy"
@@ -115,8 +115,8 @@ export default function Products() {
       {/* CTA */}
       <section className="cta-band">
         <div className="wrap">
-          <h2>아직 고민된다면?</h2>
-          <p>먼저 칼럼으로 원리부터 이해해보세요. 선택이 훨씬 쉬워집니다.</p>
+          <h2>아직 고민되나요?</h2>
+          <p>칼럼으로 원리부터 잡고 가세요. 그러면 고르기가 훨씬 쉬워집니다.</p>
           <div className="sns">
             <Link
               href="/columns"

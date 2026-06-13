@@ -24,8 +24,8 @@ export default async function Columns() {
           <span className="eyebrow">CONTENT</span>
           <h1>체력향상 칼럼</h1>
           <p>
-            운동량이 아니라 원리입니다. 바쁜 직장인이 가장 빠르게 강해지는 법을,
-            검증된 내용으로만 풀어 씁니다.
+            운동량이 아니라 원리입니다. 바쁜 직장인이 가장 빨리 강해지는 법만,
+            검증된 내용으로 풀어 씁니다.
           </p>
         </div>
       </section>
@@ -34,7 +34,7 @@ export default async function Columns() {
         <div className="wrap">
           {cols.length === 0 && (
             <p style={{ color: "var(--gray70)", fontSize: 18 }}>
-              아직 발행된 칼럼이 없습니다. 곧 찾아옵니다.
+              아직 올라온 칼럼이 없습니다. 곧 찾아옵니다.
             </p>
           )}
 
@@ -76,8 +76,8 @@ export default async function Columns() {
       {/* CTA */}
       <section className="cta-band">
         <div className="wrap">
-          <h2>혼자 하면 막막합니다</h2>
-          <p>직장인 맞춤으로, 백관장이 정리해뒀습니다.</p>
+          <h2>혼자 하면 막막하죠</h2>
+          <p>직장인에 맞춰 백관장이 정리해뒀습니다.</p>
           <div className="sns">
             <Link
               href="/products"

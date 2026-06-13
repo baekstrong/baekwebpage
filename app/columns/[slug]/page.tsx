@@ -75,8 +75,8 @@ export default async function ColumnDetail({
       {/* 하단 상품 CTA */}
       <section className="cta-band">
         <div className="wrap">
-          <h2>혼자 하면 막막합니다</h2>
-          <p>직장인 맞춤으로, 백관장이 정리해뒀습니다.</p>
+          <h2>혼자 하면 막막하죠</h2>
+          <p>직장인에 맞춰 백관장이 정리해뒀습니다.</p>
           <div className="sns">
             <Link
               href="/products"

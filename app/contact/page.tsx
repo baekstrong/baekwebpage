@@ -25,7 +25,7 @@ const CHANNELS = [
   {
     icon: "🧵",
     name: "Threads",
-    desc: "체력에 대한 생각을 글로 나눕니다.",
+    desc: "체력에 대한 생각을 글로 풉니다.",
     url: "https://www.threads.com/@easystrength101",
     label: "@easystrength101",
   },
@@ -56,7 +56,7 @@ export default function Contact() {
           <h1>문의</h1>
           <p>
             수업·강연·협업 문의는 이메일로 보내주세요. 하루 안에 답장드리려
-            노력합니다.
+            합니다.
           </p>
         </div>
       </section>
@@ -69,8 +69,8 @@ export default function Contact() {
               <div className="icon">📧</div>
               <h3>이메일</h3>
               <p className="desc">
-                수업 신청 전 궁금한 점, 기업 강연, 콘텐츠 협업 등 모든 문의를
-                받습니다.
+                수업 신청 전 궁금한 점, 기업 강연, 콘텐츠 협업까지 무엇이든
+                문의받습니다.
               </p>
               <div className="via">
                 <b>qortmdejr123@naver.com</b>

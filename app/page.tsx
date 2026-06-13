@@ -26,9 +26,9 @@ export default async function Home() {
               <span className="accent">힘을!</span>
             </h1>
             <p className="lead">
-              야근에 지친 당신도 체력은 만들 수 있습니다.
+              야근에 지친 당신도 체력을 만들 수 있습니다.
               <br />
-              운동량이 아니라 <b>원리</b>입니다. 백관장이 그 길을 안내합니다.
+              운동량이 아니라 <b>원리</b>입니다. 그 길을 백관장이 안내합니다.
             </p>
             <div className="hero-cta">
               <Link className="btn btn-primary" href="/quiz">
@@ -76,12 +76,12 @@ export default async function Home() {
               <span className="hl">현대중공업 직장인</span>이었습니다.
             </h2>
             <p>
-              책상 앞에서 무너지는 체력, 퇴근 후 운동할 기운조차 없는 하루.
-              누구보다 잘 압니다. 제가 그 자리에 있었으니까요.
+              책상 앞에서 무너지는 체력, 퇴근하면 운동할 기운조차 없는 하루.
+              누구보다 잘 압니다. 저도 그 자리에 있었으니까요.
             </p>
             <p>
-              그래서 &apos;직장인&apos;을 위한 체력 훈련을 연구했습니다. 헬스장에서
-              몇 시간씩 보낼 필요 없이, 바쁜 일상 속에서도 강해지는 원리를. 그게
+              그래서 &apos;직장인&apos;을 위한 체력 훈련을 파고들었습니다. 헬스장에서
+              몇 시간씩 보낼 필요 없이, 바쁜 일상 속에서도 강해지는 원리를요. 그게
               백관장의 체력 상담소입니다.
             </p>
             <div className="sign">— 백관장 (백승덕)</div>
@@ -103,7 +103,7 @@ export default async function Home() {
             <div>
               <span className="eyebrow">CONTENT</span>
               <h2>체력향상 칼럼</h2>
-              <p>실제 효과가 검증된 직장인 체력 원리. 매주 업데이트됩니다.</p>
+              <p>직장인에게 실제로 통한 체력 원리. 매주 새로 올라옵니다.</p>
             </div>
             <Link className="more" href="/columns">
               칼럼 전체보기 →
@@ -140,7 +140,7 @@ export default async function Home() {
             <div>
               <span className="eyebrow">PRODUCTS</span>
               <h2>백관장의 상품</h2>
-              <p>읽고 끝나지 마세요. 직접 강해지세요.</p>
+              <p>읽고 끝내지 마세요. 직접 강해지세요.</p>
             </div>
             <Link className="more" href="/products">
               상품 전체보기 →

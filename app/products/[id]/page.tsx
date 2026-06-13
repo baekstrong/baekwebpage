@@ -157,8 +157,8 @@ export default async function ProductDetail({
       {/* CTA */}
       <section className="cta-band">
         <div className="wrap">
-          <h2>아직 고민된다면?</h2>
-          <p>먼저 칼럼으로 원리부터 이해해보세요. 선택이 훨씬 쉬워집니다.</p>
+          <h2>아직 고민되나요?</h2>
+          <p>칼럼으로 원리부터 잡고 가세요. 그러면 고르기가 훨씬 쉬워집니다.</p>
           <div className="sns">
             <Link
               href="/columns"
