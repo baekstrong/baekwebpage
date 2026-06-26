@@ -57,43 +57,58 @@ function mapColumn(page: any): Column {
 
 // 발행완료 칼럼 목록 (최신순)
 export async function getColumns(): Promise<Column[]> {
-  const data = await notion(`data_sources/${DS_ID}/query`, {
-    filter: { property: "상태", select: { equals: "발행완료" } },
-    sorts: [{ property: "날짜", direction: "descending" }],
-  });
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (data.results ?? []).map(mapColumn);
+  try {
+    const data = await notion(`data_sources/${DS_ID}/query`, {
+      filter: { property: "상태", select: { equals: "발행완료" } },
+      sorts: [{ property: "날짜", direction: "descending" }],
+    });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return (data.results ?? []).map(mapColumn);
+  } catch (e) {
+    console.error("getColumns failed", e);
+    return [];
+  }
 }
 
 // slug로 단일 칼럼 (발행완료만)
 export async function getColumnBySlug(slug: string): Promise<Column | null> {
-  const data = await notion(`data_sources/${DS_ID}/query`, {
-    filter: {
-      and: [
-        { property: "상태", select: { equals: "발행완료" } },
-        { property: "slug", rich_text: { equals: slug } },
-      ],
-    },
-  });
-  const page = (data.results ?? [])[0];
-  return page ? mapColumn(page) : null;
+  try {
+    const data = await notion(`data_sources/${DS_ID}/query`, {
+      filter: {
+        and: [
+          { property: "상태", select: { equals: "발행완료" } },
+          { property: "slug", rich_text: { equals: slug } },
+        ],
+      },
+    });
+    const page = (data.results ?? [])[0];
+    return page ? mapColumn(page) : null;
+  } catch (e) {
+    console.error("getColumnBySlug failed", e);
+    return null;
+  }
 }
 
 // 페이지 본문 블록 (페이지네이션 처리)
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getBlocks(pageId: string): Promise<any[]> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const blocks: any[] = [];
-  let cursor: string | undefined;
-  do {
-    const qs = cursor
-      ? `?start_cursor=${cursor}&page_size=100`
-      : `?page_size=100`;
-    const data = await notion(`blocks/${pageId}/children${qs}`);
-    blocks.push(...(data.results ?? []));
-    cursor = data.has_more ? data.next_cursor : undefined;
-  } while (cursor);
-  return blocks;
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const blocks: any[] = [];
+    let cursor: string | undefined;
+    do {
+      const qs = cursor
+        ? `?start_cursor=${cursor}&page_size=100`
+        : `?page_size=100`;
+      const data = await notion(`blocks/${pageId}/children${qs}`);
+      blocks.push(...(data.results ?? []));
+      cursor = data.has_more ? data.next_cursor : undefined;
+    } while (cursor);
+    return blocks;
+  } catch (e) {
+    console.error("getBlocks failed", e);
+    return [];
+  }
 }
 
 // ISO 날짜 → "2026.06.07"
