@@ -249,6 +249,14 @@ section.block{padding:88px 0;}
 .quiz-disc{font-size:13px;color:var(--gray70);margin-top:20px;line-height:1.6;}
 .quiz-retry{background:none;border:none;color:var(--gray70);font-size:14px;
   text-decoration:underline;cursor:pointer;margin-top:28px;font-family:inherit;}
+/* 3축 결과 막대 */
+.qr-axes{margin:20px 0 8px;text-align:left;}
+.qr-axis{margin-bottom:14px;}
+.qr-axis-top{display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:6px;}
+.qr-axis.weak .qr-axis-top{color:var(--red);}
+.qr-bar{height:10px;background:var(--gray10);overflow:hidden;}
+.qr-bar-fill{height:100%;background:var(--navy);transition:width .4s;}
+.qr-axis.weak .qr-bar-fill{background:var(--red);}
 @media(max-width:600px){
   .quiz-email{flex-direction:column;}
   .quiz-result h2{font-size:26px;}
