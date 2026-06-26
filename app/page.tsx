@@ -65,7 +65,7 @@ export default async function Home() {
       <section className="origin" id="origin">
         <div className="wrap">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="id-photo" src="/hyundai-id.png" alt="현대중공업 사원증" />
+          <img className="id-photo" src="/hyundai-id.jpg" alt="현대중공업 사원증" />
           <div>
             <span className="eyebrow" style={{ color: "#6ea8ff" }}>
               왜 &apos;직장인&apos; 체력인가

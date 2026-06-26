@@ -73,7 +73,7 @@ export default function About() {
 
           <img
             className="ab-id"
-            src="/hyundai-id.png"
+            src="/hyundai-id.jpg"
             alt="현대중공업 사원증"
             // eslint-disable-next-line @next/next/no-img-element
           />
