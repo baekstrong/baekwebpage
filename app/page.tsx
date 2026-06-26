@@ -26,9 +26,9 @@ export default async function Home() {
               <span className="accent">힘을!</span>
             </h1>
             <p className="lead">
-              야근에 지친 당신도 체력을 만들 수 있습니다.
+              퇴근하면 소파에 쓰러지는 하루. 의지가 약한 게 아닙니다.
               <br />
-              운동량이 아니라 <b>원리</b>입니다. 그 길을 백관장이 안내합니다.
+              방법이 틀렸을 뿐이에요. <b>운동량이 아니라 원리</b>입니다.
             </p>
             <div className="hero-cta">
               <Link className="btn btn-primary" href="/quiz">
@@ -61,6 +61,25 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* PAIN — 문제 공감 (about에서 끌어온 검증된 카피) */}
+      <section className="block">
+        <div className="wrap ab-narrow">
+          <span className="eyebrow">혹시, 당신의 하루</span>
+          <h2 className="ab-h2">혹시 이런 하루를 보내고 계신가요?</h2>
+          <ul className="ab-pain">
+            <li>알람을 다섯 개 맞춰놔도 아침이면 몸이 천근만근이다.</li>
+            <li>점심 먹고 나면 오후 3시쯤 기절할 것 같은 식곤증이 몰려온다.</li>
+            <li>퇴근하면 소파에 누워 스마트폰만 보다가 잠든다.</li>
+            <li>주말 내내 쉬어도 월요일 아침엔 여전히 피곤하다.</li>
+          </ul>
+          <p>
+            &ldquo;다들 이렇게 살지&rdquo; 싶겠지만, 정상이 아닙니다. 나이도
+            의지도 체질도 아니에요. 하루 8시간 앉아 일하는 몸이라면 당연한
+            결과입니다. <b>그리고 바꿀 수 있습니다.</b>
+          </p>
+        </div>
+      </section>
+
       {/* ORIGIN STORY */}
       <section className="origin" id="origin">
         <div className="wrap">
@@ -76,14 +95,17 @@ export default async function Home() {
               <span className="hl">현대중공업 직장인</span>이었습니다.
             </h2>
             <p>
-              책상 앞에서 무너지는 체력, 퇴근하면 운동할 기운조차 없는 하루.
-              누구보다 잘 압니다. 저도 그 자리에 있었으니까요.
+              파워리프팅 대회에서 1등을 했는데, 계단 5층만 올라도 숨이 찼습니다.
+              그때 알았어요. 무거운 걸 드는 힘과, 일상을 버티는 체력은 전혀 다른
+              겁니다.
             </p>
             <p>
-              그래서 &apos;직장인&apos;을 위한 체력 훈련을 파고들었습니다. 헬스장에서
-              몇 시간씩 보낼 필요 없이, 바쁜 일상 속에서도 강해지는 원리를요. 그게
-              백관장의 체력 상담소입니다.
+              책상 앞에서 무너지는 체력, 퇴근하면 운동할 기운조차 없는 하루. 저도
+              그 자리에 있었습니다. 그래서 &apos;직장인&apos;을 위한 체력 훈련을
+              파고들었어요. 헬스장에서 몇 시간씩 보낼 필요 없이, 바쁜 일상 속에서도
+              강해지는 원리를요.
             </p>
+            <p>그게 백관장의 체력 상담소입니다.</p>
             <div className="sign">— 백관장 (백승덕)</div>
             <Link
               className="more"
@@ -103,7 +125,7 @@ export default async function Home() {
             <div>
               <span className="eyebrow">CONTENT</span>
               <h2>체력향상 칼럼</h2>
-              <p>직장인에게 실제로 통한 체력 원리. 매주 새로 올라옵니다.</p>
+              <p>막막할 때 가장 먼저 읽을 글. 직장인에게 실제로 통한 체력 원리만 모았습니다.</p>
             </div>
             <Link className="more" href="/columns">
               칼럼 전체보기 →
@@ -189,6 +211,29 @@ export default async function Home() {
         <div className="wrap">
           <h2>직장인에게, 힘을!</h2>
           <p>유튜브 · 스레드 · 인스타 · 틱톡에서 매일 만나요.</p>
+          <div
+            className="hero-cta"
+            style={{ justifyContent: "center", marginBottom: 36 }}
+          >
+            <Link
+              className="btn"
+              href="/quiz"
+              style={{ background: "#fff", color: "#004AAD", borderColor: "#fff" }}
+            >
+              1분 체력 자가진단 →
+            </Link>
+            <Link
+              className="btn"
+              href="/products"
+              style={{
+                background: "transparent",
+                color: "#fff",
+                borderColor: "rgba(255,255,255,.5)",
+              }}
+            >
+              상품 둘러보기
+            </Link>
+          </div>
           <div className="sns">
             <a
               href="https://www.youtube.com/@easystrength101"
