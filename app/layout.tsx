@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
+import { IBM_Plex_Sans_KR } from "next/font/google";
 import "./globals.css";
+
+const ibmPlexSansKR = IBM_Plex_Sans_KR({
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-ibm",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://masterbaek.vercel.app"),
@@ -25,15 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="ko" className={ibmPlexSansKR.variable}>
       <body>{children}</body>
     </html>
   );
