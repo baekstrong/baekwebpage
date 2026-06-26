@@ -1,18 +1,33 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 
 type Props = {
   active?: "columns" | "products" | "quiz" | "about" | "contact";
 };
 
 export default function Header({ active }: Props) {
+  const [open, setOpen] = useState(false);
   return (
     <header>
       <div className="wrap nav">
-        <Link className="brand" href="/">
+        <Link className="brand" href="/" onClick={() => setOpen(false)}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo.png" alt="백관장" /> 백관장의 체력 상담소
         </Link>
-        <nav className="menu">
+        <button
+          className="nav-toggle"
+          aria-label="메뉴"
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? "✕" : "☰"}
+        </button>
+        <nav
+          className={`menu ${open ? "open" : ""}`}
+          onClick={() => setOpen(false)}
+        >
           <Link href="/columns" className={active === "columns" ? "active" : undefined}>
             칼럼
           </Link>

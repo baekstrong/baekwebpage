@@ -47,6 +47,8 @@ header{
 .menu a:hover,.menu a.active{color:var(--navy);}
 .menu a.active{font-weight:700;}
 .nav-cta{font-weight:600;color:var(--navy);}
+.nav-toggle{display:none;background:none;border:none;font-size:24px;
+  cursor:pointer;color:var(--ink);line-height:1;padding:4px;}
 
 /* ── Hero ── */
 .hero{position:relative;overflow:hidden;}
@@ -287,7 +289,16 @@ footer{background:var(--ink);color:#9b9b9b;padding:56px 24px;font-size:14px;}
   .sec-head h2,.origin h2,.cta-band h2{font-size:32px;}
   .page-head h1{font-size:34px;}
   .stats{gap:24px;}
-  .menu{display:none;}
+  .nav-toggle{display:block;}
+  .nav-cta{display:none;}
+  .menu{
+    display:none;position:absolute;top:72px;left:0;right:0;
+    flex-direction:column;gap:0;background:#fff;
+    border-bottom:1px solid var(--gray30);padding:8px 24px 16px;
+    box-shadow:0 8px 16px rgba(0,0,0,.06);
+  }
+  .menu.open{display:flex;}
+  .menu a{padding:14px 0;border-bottom:1px solid var(--gray10);font-size:16px;}
 }
 
 /* ---------- 뉴스레터 구독 밴드 ---------- */
