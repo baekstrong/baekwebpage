@@ -134,20 +134,33 @@ export default function Quiz() {
                 우선이에요.
               </p>
               <p>
-                백관장의 <b>통증 케어 콘텐츠</b>를 준비하고 있습니다. 출시되면
-                가장 먼저 알려드릴게요.
+                통증부터 안전하게 잡고 싶다면, 근력학교 정규수업이{" "}
+                <b>1단계 교정 운동(통증을 줄이는 직장인 맞춤 교정)</b>부터
+                시작합니다. 무리한 운동 없이 아픈 곳부터 다룹니다.
+              </p>
+
+              <div className="qr-rec">
+                <div className="qr-rec-label">통증이 있다면, 이 단계부터</div>
+                <Link className="btn btn-primary" href="/products/school">
+                  근력학교 정규수업 보러 가기 →
+                </Link>
+              </div>
+
+              <p>
+                바로 시작이 망설여진다면, 백관장의 직장인 체력 레터로 통증에 무리
+                없는 운동 이야기를 받아보세요.
               </p>
 
               {!emailDone ? (
                 <form className="quiz-email" onSubmit={handleEmail}>
                   <input type="email" name="email" required placeholder="이메일 주소" />
                   <button type="submit" className="btn btn-primary" disabled={sending}>
-                    {sending ? "신청 중…" : "출시 알림 받기 →"}
+                    {sending ? "신청 중…" : "체력 레터 받기 →"}
                   </button>
                 </form>
               ) : (
                 <p className="quiz-thanks">
-                  신청 완료! 통증 케어 콘텐츠가 준비되면 가장 먼저 보내드릴게요.
+                  신청 완료! 직장인 체력 레터를 보내드릴게요.
                 </p>
               )}
 
