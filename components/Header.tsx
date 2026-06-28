@@ -34,13 +34,6 @@ export default function Header({ active }: Props) {
           <Link href="/products" className={active === "products" ? "active" : undefined}>
             상품
           </Link>
-          <a
-            href="https://baekstrong.github.io/timetablemanager/?register=true"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            백관장에게 직접 배우기
-          </a>
           <Link href="/quiz" className={active === "quiz" ? "active" : undefined}>
             자가진단
           </Link>
