@@ -7,6 +7,8 @@ import { getFeaturedReviews } from "@/lib/reviews";
 
 export const revalidate = 60; // ISR
 
+export const metadata = { alternates: { canonical: "/" } };
+
 export default async function Home() {
   const cols = await getColumns();
   const homeCols = cols.slice(0, 3);

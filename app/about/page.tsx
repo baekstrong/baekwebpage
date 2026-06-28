@@ -6,6 +6,7 @@ export const metadata = {
   title: "백관장 이야기 — 백관장의 체력 상담소",
   description:
     "운동 10년, 파워리프팅 대회 1등. 그런데 계단 5층에서 숨이 찼습니다. 현대중공업 직장인에서 직장인 체력 전문가가 되기까지.",
+  alternates: { canonical: "/about" },
 };
 
 export default function About() {

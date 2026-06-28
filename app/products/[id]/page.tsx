@@ -5,6 +5,16 @@ import Footer from "@/components/Footer";
 import { PRODUCTS, getProduct } from "@/lib/products";
 import Reviews from "@/components/Reviews";
 import { getReviewsByProduct } from "@/lib/reviews";
+import JsonLd from "@/components/JsonLd";
+
+// 가격 문자열 → KRW 숫자 ("₩ 9,900"→9900 / "주 2회 31만…"→310000 / "준비 중"→null)
+function priceKRW(price: string): number | null {
+  const won = price.match(/₩\s*([\d,]+)/);
+  if (won) return Number(won[1].replace(/,/g, ""));
+  const man = price.match(/(\d+)\s*만/);
+  if (man) return Number(man[1]) * 10000;
+  return null;
+}
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ id: p.id }));
@@ -21,6 +31,7 @@ export async function generateMetadata({
   return {
     title: `${p.name} — 백관장의 체력 상담소`,
     description: p.short,
+    alternates: { canonical: `/products/${id}` },
   };
 }
 
@@ -44,8 +55,29 @@ export default async function ProductDetail({
       ? getReviewsByProduct(p.id)
       : [];
 
+  const price = priceKRW(p.price);
+  const productLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: p.name,
+    description: p.short,
+    brand: { "@type": "Brand", name: "백관장의 체력 상담소" },
+    ...(price && p.available && p.buyUrl
+      ? {
+          offers: {
+            "@type": "Offer",
+            price: String(price),
+            priceCurrency: "KRW",
+            availability: "https://schema.org/InStock",
+            url: p.buyUrl,
+          },
+        }
+      : {}),
+  };
+
   return (
     <>
+      <JsonLd data={productLd} />
       <Header active="products" />
 
       <article>

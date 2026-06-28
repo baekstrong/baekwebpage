@@ -8,6 +8,7 @@ export const revalidate = 60; // ISR
 
 export const metadata = {
   title: "체력향상 칼럼 — 백관장의 체력 상담소",
+  alternates: { canonical: "/columns" },
 };
 
 export default async function Columns() {

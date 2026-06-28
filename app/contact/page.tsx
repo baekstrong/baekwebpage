@@ -5,6 +5,7 @@ export const metadata = {
   title: "문의 — 백관장의 체력 상담소",
   description:
     "수업·강연·협업 문의는 이메일로, 매일의 체력 콘텐츠는 SNS에서 만나요.",
+  alternates: { canonical: "/contact" },
 };
 
 const CHANNELS = [

@@ -5,6 +5,7 @@ import { PRODUCTS } from "@/lib/products";
 
 export const metadata = {
   title: "상품 — 백관장의 체력 상담소",
+  alternates: { canonical: "/products" },
 };
 
 export default function Products() {

@@ -26,7 +26,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: c.date ? new Date(c.date) : undefined,
       priority: 0.7,
     })),
-    ...PRODUCTS.map((p) => ({
+    ...PRODUCTS.filter((p) => p.available).map((p) => ({
       url: `${BASE}/products/${p.id}`,
       priority: 0.6,
     })),
