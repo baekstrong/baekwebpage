@@ -77,14 +77,14 @@ export default async function Columns() {
       {/* CTA */}
       <section className="cta-band">
         <div className="wrap">
-          <h2>혼자 하면 막막하죠</h2>
-          <p>직장인에 맞춰 백관장이 정리해뒀습니다.</p>
+          <h2>혼자 하면 이게 맞나 싶죠</h2>
+          <p>방향부터 잡아야 헛고생을 안 합니다. 직장인 몸에 맞춰 단계별로 정리해뒀어요.</p>
           <div className="sns">
             <Link
               href="/products"
               style={{ background: "#fff", color: "#004AAD", borderColor: "#fff" }}
             >
-              방법 둘러보기 →
+              내게 맞는 방법 보기 →
             </Link>
           </div>
         </div>
