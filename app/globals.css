@@ -116,7 +116,7 @@ section.block{padding:88px 0;}
 /* ── 칼럼 표지 카드 (그림 없이 남색 + 제목) ── */
 .fcover{background:var(--navy);color:#fff;display:flex;align-items:center;padding:40px;
   font-size:26px;font-weight:700;line-height:1.3;min-height:280px;}
-.ccover{background:var(--navy);color:#fff;display:flex;align-items:flex-end;
+.ccover{background:var(--navy);color:#fff;display:flex;align-items:center;
   padding:24px;margin:-32px -32px 20px;min-height:130px;
   font-size:18px;font-weight:600;line-height:1.4;}
 .col-card:hover .ccover,.feature:hover .fcover{background:var(--navy-dark);}
