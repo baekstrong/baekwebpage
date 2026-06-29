@@ -33,7 +33,7 @@ export default function SubscribeForm() {
       <div className="wrap subscribe-inner">
         <div>
           <h2>새 칼럼을 메일로 받아보세요</h2>
-          <p>직장인 체력 원리를 한 편씩 보내드립니다. 광고는 없습니다.</p>
+          <p>직장인 체력 원리를 한 편씩 보내드립니다.</p>
         </div>
         <div>
           {state === "done" ? (
