@@ -28,9 +28,9 @@ export default async function Home() {
               <span className="accent">힘을!</span>
             </h1>
             <p className="lead">
-              퇴근하면 소파에 쓰러지는 하루. 의지가 약한 게 아닙니다.
+              퇴근하면 소파에 쓰러지는 하루.
               <br />
-              방법이 틀렸을 뿐이에요. <b>운동량이 아니라 원리</b>입니다.
+              의지가 약해서가 아닙니다. 바쁜 직장인에게 <b>맞는 방법</b>을 몰랐을 뿐이에요.
             </p>
             <div className="hero-cta">
               <Link className="btn btn-primary" href="/quiz">
