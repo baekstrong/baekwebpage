@@ -222,6 +222,7 @@ SNS 유입(유튜브·스레드·인스타·틱톡) → 칼럼으로 설득 → 
 ---
 
 ### 로그
+- **2026-06-29 (1)** — ✅ **칼럼 읽기 UX**: 칼럼 상세에서 sticky 상단 네비(72px)가 스크롤해도 떠 있어 읽을 공간이 줄던 문제. 칼럼 상세를 `.reading` 래퍼로 감싸 해당 페이지에서만 `header`를 `position:static`(본문과 함께 스크롤). 홈·상품 등 마케팅 페이지의 고정 네비+CTA는 유지. 커밋 `e7e3727`. 라이브 검증(`class="reading"`·CSS 규칙 배포 확인).
 - **2026-06-28 (1)** — ✅ **SEO/측정 4건 + 칼럼 12편 발행 + 메뉴 추가**:
   - **SEO 코드(커밋 `e29f3a5`)**: ① `@vercel/analytics`(`<Analytics/>` layout) — 퍼널 측정 시작. ② **JSON-LD**(`components/JsonLd.tsx` 신설, `</script>`만 이스케이프) — 전역 Organization/Person/WebSite(@graph, sameAs 5채널) + 칼럼 Article + 상품 Product+Offer(`priceKRW` 파서, 자가검증 통과). ③ **canonical** 8개 페이지 전부(`alternates.canonical`). ④ **sitemap** `available` 상품만 색인(준비중 thin page 제외). 보너스: GSC·네이버 소유확인을 **환경변수 훅**(`GOOGLE_SITE_VERIFICATION`·`NAVER_SITE_VERIFICATION`)으로 미리 깔아둠 → 코드 받으면 Vercel 환경변수만 채우면 끝. `tsc` 통과(`next build`는 iCloud 행 → Vercel이 게이트).
   - **AggregateRating 보류**: 실제 평점 숫자가 없어 날조 대신 보류 — 네이버지도/스마트스토어 판매자센터의 **평균 평점·건수** 받으면 그때 추가.
