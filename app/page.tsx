@@ -30,7 +30,9 @@ export default async function Home() {
             <p className="lead">
               퇴근하면 소파에 쓰러지는 하루.
               <br />
-              의지가 약해서가 아닙니다. 바쁜 직장인에게 <b>맞는 방법</b>을 몰랐을 뿐이에요.
+              의지가 약해서가 아닙니다.
+              <br />
+              바쁜 직장인에게 <b>맞는 방법</b>을 몰랐을 뿐이에요.
             </p>
             <div className="hero-cta">
               <Link className="btn btn-primary" href="/quiz">
@@ -77,7 +79,9 @@ export default async function Home() {
           <p>
             &ldquo;다들 이렇게 살지&rdquo; 싶겠지만, 정상이 아닙니다. 나이도
             의지도 체질도 아니에요. 하루 8시간 앉아 일하는 몸이라면 당연한
-            결과입니다. <b>그리고 바꿀 수 있습니다.</b>
+            결과입니다.
+            <br />
+            <b>그리고 바꿀 수 있습니다.</b>
           </p>
         </div>
       </section>
