@@ -68,7 +68,8 @@ export default async function ColumnDetail({
   };
 
   return (
-    <>
+    // reading: 칼럼 본문 읽는 동안 상단 네비 고정 해제(함께 스크롤) — 읽기 공간 확보
+    <div className="reading">
       <JsonLd data={articleLd} />
       <Header active="columns" />
 
@@ -109,6 +110,6 @@ export default async function ColumnDetail({
       </section>
 
       <Footer />
-    </>
+    </div>
   );
 }
