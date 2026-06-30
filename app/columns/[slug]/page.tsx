@@ -73,41 +73,38 @@ export default async function ColumnDetail({
       <JsonLd data={articleLd} />
       <Header active="columns" />
 
-      <article>
-        {/* 표지: 그림 없이 남색 헤더 */}
-        <header className="article-hero">
-          <div className="wrap">
-            <Link className="back" href="/columns">
+      <div className="sg">
+        <article>
+          <header className="sg-art-hero">
+            <Link className="back mono" href="/columns">
               ← 칼럼 목록
             </Link>
             <h1>{col.title}</h1>
-            <div className="meta">{formatDate(col.date)}</div>
+            <div className="meta mono">{formatDate(col.date)}</div>
+          </header>
+
+          <div className="sg-article">
+            <NotionContent blocks={blocks} />
           </div>
-        </header>
+        </article>
 
-        <div className="article">
-          <NotionContent blocks={blocks} />
-        </div>
-      </article>
+        {/* 뉴스레터 구독 */}
+        <SubscribeForm />
 
-      {/* 뉴스레터 구독 */}
-      <SubscribeForm />
-
-      {/* 하단 상품 CTA */}
-      <section className="cta-band">
-        <div className="wrap">
+        {/* 하단 상품 CTA */}
+        <section className="sg-cta">
           <h2>혼자 하면 이게 맞나 싶죠</h2>
-          <p>방향부터 잡아야 헛고생을 안 합니다. 직장인 몸에 맞춰 단계별로 정리해뒀어요.</p>
-          <div className="sns">
-            <Link
-              href="/products"
-              style={{ background: "#fff", color: "#004AAD", borderColor: "#fff" }}
-            >
+          <p>
+            방향부터 잡아야 헛고생을 안 합니다. 직장인 몸에 맞춰 단계별로
+            정리해뒀어요.
+          </p>
+          <div className="btns">
+            <Link className="sg-btn sg-btn-primary" href="/products">
               내게 맞는 방법 보기 →
             </Link>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       <Footer />
     </div>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { font-family: 'Pretendard', -apple-system, sans-serif; background:#fff; color:#15171C; -webkit-font-smoothing:antialiased; }
+  .mono { font-family: 'Space Mono', monospace; }
+  @media (max-width: 860px){
+    .wrap { padding-left:22px !important; padding-right:22px !important; }
+    .split2 { grid-template-columns:1fr !important; }
+    .split2 > .splitborder { border-right:none !important; border-bottom:1px solid #E4E9F0 !important; }
+    .statrow { flex-direction:column !important; }
+    .statrow > div { border-right:none !important; border-bottom:1px solid #E4E9F0 !important; }
+    .nav-links { display:none !important; }
+    .h1 { font-size:46px !important; }
+    .heroimg { min-height:300px !important; }
+    .footrow { flex-direction:column !important; gap:28px !important; align-items:flex-start !important; }
+    .footrow > div:last-child { align-items:flex-start !important; text-align:left !important; flex-direction:row !important; flex-wrap:wrap !important; gap:18px !important; }
+  }
+</style>
+</helmet>
+
+<div style="max-width:1180px; margin:0 auto;">
+  <!-- nav -->
+  <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; padding:20px 32px; border-bottom:1.5px solid #15171C; position:sticky; top:0; background:rgba(255,255,255,0.9); backdrop-filter:saturate(180%) blur(12px); z-index:20;">
+    <a href="홈페이지 - Structured Grid.dc.html" style="display:flex; align-items:center; gap:11px; text-decoration:none; color:inherit;">
+      <img src="https://masterbaek.vercel.app/logo.png" alt="백관장 로고" style="width:28px; height:28px; border-radius:5px; object-fit:cover;">
+      <span style="font-size:15px; font-weight:800; letter-spacing:-0.01em;">백관장의 체력 상담소</span>
+    </a>
+    <div class="nav-links" style="display:flex; align-items:center; gap:28px; font-size:13px; color:#2D3039; font-weight:600;">
+      <a href="칼럼.dc.html" style="text-decoration:none; color:inherit;" style-hover="color:#0A4DB0;">칼럼</a>
+      <a href="상품.dc.html" style="text-decoration:none; color:inherit;" style-hover="color:#0A4DB0;">상품</a>
+      <a href="자가진단.dc.html" style="text-decoration:none; color:inherit;" style-hover="color:#0A4DB0;">자가진단</a>
+      <a href="소개.dc.html" style="text-decoration:none; color:#0A4DB0;">소개</a>
+      <a href="문의.dc.html" style="text-decoration:none; color:inherit;" style-hover="color:#0A4DB0;">문의</a>
+      <a href="자가진단.dc.html" class="mono" style="border-bottom:2px solid #0A4DB0; padding-bottom:3px; color:#0A4DB0; text-decoration:none;">자가진단 →</a>
+    </div>
+  </div>
+
+  <!-- hero split -->
+  <div class="split2" style="display:grid; grid-template-columns:1.1fr 0.9fr; border-bottom:1px solid #E4E9F0;">
+    <div class="wrap splitborder" style="padding:84px 32px 72px; border-right:1px solid #E4E9F0;">
+      <div class="mono" style="font-size:12px; letter-spacing:0.16em; color:#0A4DB0; margin-bottom:24px;">▍ABOUT · 백관장 이야기</div>
+      <h1 class="h1" style="font-size:60px; font-weight:800; letter-spacing:-0.03em; line-height:1.04; margin:0 0 22px;">무거운 걸 드는 힘과,<br>버티는 체력은<br><span style="color:#0A4DB0;">다릅니다.</span></h1>
+      <p style="font-size:18px; line-height:1.7; color:#565B63; max-width:460px; margin:0;">바벨은 누구보다 무겁게 들었는데, 계단 5층만 올라도 숨이 찼습니다. 직장인의 몸을 파고든 이유입니다.</p>
+    </div>
+    <div style="position:relative; min-height:460px;">
+      <img class="heroimg" src="https://masterbaek.vercel.app/profile.jpg" alt="백관장 백승덕" style="width:100%; height:100%; min-height:460px; object-fit:cover; display:block;">
+      <div class="mono" style="position:absolute; left:0; bottom:0; background:#15171C; color:#fff; font-size:11px; letter-spacing:0.1em; padding:10px 16px;">BAEK SEUNG-DEOK · 백관장</div>
+    </div>
+  </div>
+
+  <!-- story 1 -->
+  <div class="split2 wrap" style="display:grid; grid-template-columns:0.8fr 1.2fr; padding:80px 32px; gap:48px;">
+    <div>
+      <div class="mono" style="font-size:12px; letter-spacing:0.16em; color:#0A4DB0; margin-bottom:16px;">▍01 — 현대중공업에서</div>
+      <h2 style="font-size:32px; font-weight:800; letter-spacing:-0.02em; line-height:1.2; margin:0;">저도 야근하던 직장인이었습니다.</h2>
+    </div>
+    <div>
+      <p style="font-size:18px; line-height:1.8; color:#2D3039; margin:0 0 20px;">바벨은 누구보다 무겁게 들었습니다. 그런데 계단 5층만 올라도 숨이 찼어요. 그때 알았습니다. 무거운 걸 드는 힘과, 하루를 버티는 체력은 전혀 다른 겁니다.</p>
+      <p style="font-size:18px; line-height:1.8; color:#565B63; margin:0;">책상 앞에서 무너지는 체력, 퇴근하면 운동할 기운조차 없는 하루. 저도 똑같이 그 자리에 있었습니다.</p>
+    </div>
+  </div>
+
+  <!-- story 2 (image) -->
+  <div class="split2" style="display:grid; grid-template-columns:1fr 1fr; border-top:1px solid #E4E9F0; border-bottom:1px solid #E4E9F0;">
+    <img class="heroimg" src="https://masterbaek.vercel.app/hyundai-id.jpg" alt="현대중공업 사원증" style="width:100%; height:100%; min-height:420px; object-fit:cover;">
+    <div class="wrap" style="padding:72px 32px;">
+      <div class="mono" style="font-size:12px; letter-spacing:0.16em; color:#0A4DB0; margin-bottom:16px;">▍02 — 직장인 체력을 파고들다</div>
+      <h2 style="font-size:30px; font-weight:800; letter-spacing:-0.02em; line-height:1.22; margin:0 0 22px;">헬스장에 몇 시간씩 매달리지 않아도 강해지는 원리</h2>
+      <p style="font-size:16.5px; line-height:1.8; color:#565B63; margin:0 0 18px;">그래서 '직장인'을 위한 체력 훈련을 파고들었습니다. 바쁜 일상 속에서도, 짧은 시간에, 일상이 가벼워지는 방향으로요.</p>
+      <p style="font-size:16.5px; line-height:1.8; color:#565B63; margin:0;">8년간 직장인 수백 명을 코칭하며 확인했습니다. 체력은 의지가 아니라 순서와 원리의 문제라는 걸.</p>
+    </div>
+  </div>
+
+  <!-- philosophy band -->
+  <div style="background:#15171C; color:#fff;">
+    <div class="wrap" style="padding:88px 32px; text-align:center;">
+      <div class="mono" style="font-size:12px; letter-spacing:0.18em; color:#6AA4FF; margin-bottom:24px;">▍PHILOSOPHY</div>
+      <h2 style="font-size:46px; font-weight:800; letter-spacing:-0.03em; line-height:1.15; margin:0 0 22px;">운동량이 아니라, <span style="color:#6AA4FF;">원리입니다.</span></h2>
+      <p style="font-size:18px; line-height:1.7; color:#C2C8D2; max-width:620px; margin:0 auto;">스트렝스 트레이닝의 대중화를 이루기 위해 노력합니다. 누구나, 바쁜 일상 속에서도 강해질 수 있도록.</p>
+    </div>
+  </div>
+
+  <!-- stats -->
+  <div class="statrow" style="display:flex; border-bottom:1px solid #E4E9F0;">
+    <div class="wrap" style="flex:1; padding:36px 32px; border-right:1px solid #E4E9F0;"><div style="font-size:40px; font-weight:800; letter-spacing:-0.02em;">6.2만</div><div style="font-size:13px; color:#888E97; margin-top:6px;">유튜브 구독자</div></div>
+    <div class="wrap" style="flex:1; padding:36px 32px; border-right:1px solid #E4E9F0;"><div style="font-size:40px; font-weight:800; letter-spacing:-0.02em;">534+</div><div style="font-size:13px; color:#888E97; margin-top:6px;">유튜브 영상</div></div>
+    <div class="wrap" style="flex:1; padding:36px 32px; border-right:1px solid #E4E9F0;"><div style="font-size:40px; font-weight:800; letter-spacing:-0.02em;">8년</div><div style="font-size:13px; color:#888E97; margin-top:6px;">직장인 코칭</div></div>
+    <div class="wrap" style="flex:1; padding:36px 32px;"><div style="font-size:40px; font-weight:800; letter-spacing:-0.02em;">540<span style="font-size:22px;">kg</span></div><div style="font-size:13px; color:#888E97; margin-top:6px;">3대 합계 기록</div></div>
+  </div>
+
+  <!-- signature quote -->
+  <div class="wrap" style="padding:72px 32px;">
+    <div style="border-left:3px solid #0A4DB0; padding:6px 0 6px 28px; max-width:760px;">
+      <p style="font-size:24px; line-height:1.6; font-weight:700; letter-spacing:-0.01em; margin:0 0 18px;">"책상 앞에서 무너지지 않는 몸. 그게 직장인에게 진짜 필요한 힘입니다."</p>
+      <div style="font-size:15px; font-weight:700; color:#565B63;">— 백관장 (백승덕)</div>
+    </div>
+  </div>
+
+  <!-- cta -->
+  <div class="wrap footrow" style="padding:72px 32px; display:flex; align-items:flex-end; justify-content:space-between; border-top:1.5px solid #15171C; flex-wrap:wrap; gap:28px;">
+    <div>
+      <h2 style="font-size:44px; font-weight:800; letter-spacing:-0.025em; margin:0 0 12px;">직장인에게, <span style="color:#0A4DB0;">힘을!</span></h2>
+      <p style="font-size:15px; color:#696F78; margin:0 0 22px;">지금 내 체력부터 점검해볼까요?</p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a href="자가진단.dc.html" style="background:#0A4DB0; color:#fff; font-size:14px; font-weight:600; padding:13px 22px; text-decoration:none;" style-hover="background:#083C8C;">1분 체력 자가진단 →</a>
+        <a href="상품.dc.html" style="border:1.5px solid #15171C; color:#15171C; font-size:14px; font-weight:600; padding:13px 22px; text-decoration:none;" style-hover="background:#15171C; color:#fff;">상품 둘러보기</a>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:8px; align-items:flex-end; text-align:right; font-size:14px; font-weight:600; color:#15171C;">
+      <a href="https://www.youtube.com/@easystrength101" target="_blank" style="color:inherit; text-decoration:none;" style-hover="color:#0A4DB0;">YouTube</a>
+      <a href="https://www.instagram.com/easystrength101/" target="_blank" style="color:inherit; text-decoration:none;" style-hover="color:#0A4DB0;">Instagram</a>
+      <a href="https://www.threads.com/@easystrength101" target="_blank" style="color:inherit; text-decoration:none;" style-hover="color:#0A4DB0;">Threads · TikTok</a>
+      <a href="https://blog.naver.com/qortmdejr123" target="_blank" style="color:inherit; text-decoration:none;" style-hover="color:#0A4DB0;">블로그</a>
+    </div>
+  </div>
+  <div class="wrap" style="padding:26px 32px; border-top:1px solid #E4E9F0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+    <div style="display:flex; align-items:center; gap:10px;"><img src="https://masterbaek.vercel.app/logo.png" alt="" style="width:22px; height:22px; border-radius:5px; object-fit:cover;"><span class="mono" style="font-size:12px; color:#888E97;">qortmdejr123@naver.com</span></div>
+    <span class="mono" style="font-size:12px; color:#A6ABB3;">© 2026 백관장의 체력 상담소. All rights reserved.</span>
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>

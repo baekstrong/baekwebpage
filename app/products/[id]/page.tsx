@@ -80,127 +80,117 @@ export default async function ProductDetail({
       <JsonLd data={productLd} />
       <Header active="products" />
 
-      <article>
-        {/* 표지: 남색 헤더 */}
-        <header className="product-hero">
-          <div className="wrap">
-            <Link className="back" href="/products">
+      <div className="sg">
+        <article>
+          <header className="sg-prod-hero">
+            <Link className="back mono" href="/products">
               ← 상품 전체
             </Link>
-            <div className="phead">
-              <div className="picon">{p.icon}</div>
-              <div>
-                <div className="pcat">{p.categoryLabel}</div>
-                <h1>{p.name}</h1>
-                <p className="ptag">{p.tagline}</p>
+            <div className="cat mono">{p.categoryLabel}</div>
+            <h1>{p.name}</h1>
+            <p className="tag">{p.tagline}</p>
+          </header>
+
+          <div className="sg-prod-body">
+            <div className="sg-pmain">
+              {p.detail.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+
+              <h2>이런 분께 추천합니다</h2>
+              <ul>
+                {p.forWho.map((w, i) => (
+                  <li key={i}>{w}</li>
+                ))}
+              </ul>
+
+              <h2>이런 내용을 담았습니다</h2>
+              <ul>
+                {p.includes.map((w, i) => (
+                  <li key={i}>{w}</li>
+                ))}
+              </ul>
+            </div>
+
+            {/* 구매 박스 */}
+            <aside className="sg-pbuy">
+              <div className="price">{p.price}</div>
+              <div className="via">
+                결제: <b>{p.via}</b>
               </div>
-            </div>
-          </div>
-        </header>
-
-        <div className="product-body wrap">
-          <div className="pmain">
-            {p.detail.map((para, i) => (
-              <p key={i}>{para}</p>
-            ))}
-
-            <h2>이런 분께 추천합니다</h2>
-            <ul>
-              {p.forWho.map((w, i) => (
-                <li key={i}>{w}</li>
-              ))}
-            </ul>
-
-            <h2>이런 내용을 담았습니다</h2>
-            <ul>
-              {p.includes.map((w, i) => (
-                <li key={i}>{w}</li>
-              ))}
-            </ul>
-          </div>
-
-          {/* 구매 박스 */}
-          <aside className="pbuy">
-            <div className="pbuy-price">{p.price}</div>
-            <div className="pbuy-via">
-              결제: <b>{p.via}</b>
-            </div>
-            {p.available && p.buyUrl ? (
-              <a
-                className="btn btn-primary pbuy-btn"
-                href={p.buyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {p.buyLabel} →
-              </a>
-            ) : p.available && !p.buyUrl ? (
-              <>
-                <span className="btn btn-primary pbuy-btn pbuy-disabled">
-                  {p.buyLabel} (준비 중)
-                </span>
-                <p className="pbuy-note">결제 링크 연결 예정입니다.</p>
-              </>
-            ) : (
-              <>
-                <Link className="btn btn-ghost pbuy-btn" href="/#sns">
+              {p.available && p.buyUrl ? (
+                <a
+                  className="sg-btn sg-btn-primary sg-pbuy-btn"
+                  href={p.buyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {p.buyLabel} →
-                </Link>
-                <p className="pbuy-note">출시되면 가장 먼저 알려드릴게요.</p>
-              </>
-            )}
-          </aside>
-        </div>
+                </a>
+              ) : p.available && !p.buyUrl ? (
+                <>
+                  <span className="sg-btn sg-btn-primary sg-pbuy-btn sg-pbuy-disabled">
+                    {p.buyLabel} (준비 중)
+                  </span>
+                  <p className="sg-pbuy-note">결제 링크 연결 예정입니다.</p>
+                </>
+              ) : (
+                <>
+                  <Link className="sg-btn sg-btn-ghost sg-pbuy-btn" href="/#sns">
+                    {p.buyLabel} →
+                  </Link>
+                  <p className="sg-pbuy-note">출시되면 가장 먼저 알려드릴게요.</p>
+                </>
+              )}
+            </aside>
+          </div>
 
-        {/* 관련 상품 */}
-        {related.length > 0 && (
-          <section className="block" style={{ paddingTop: 0 }}>
-            <div className="wrap">
-              <div className="cat-label">함께 보면 좋은 상품</div>
-              <div className="grid-prod">
-                {related.map((r) => (
-                  <Link className="prod" key={r.id} href={`/products/${r.id}`}>
-                    <div className="icon">{r.icon}</div>
-                    <h3>{r.name}</h3>
-                    <div className="price">{r.price}</div>
-                    <p className="desc">{r.short}</p>
-                    <span className="buy">자세히 보기 →</span>
+          {/* 관련 상품 */}
+          {related.length > 0 && (
+            <section className="sg-body tight">
+              <div className="sg-catlabel mono">함께 보면 좋은 상품</div>
+              <div className="sg-rows">
+                {related.map((r, i) => (
+                  <Link className="sg-row" key={r.id} href={`/products/${r.id}`}>
+                    <span className="i mono">{String(i + 1).padStart(2, "0")}</span>
+                    <div>
+                      <div className="t">{r.name}</div>
+                      <div className="price">{r.price}</div>
+                      <div className="d">{r.short}</div>
+                    </div>
+                    <div className="cta">자세히 보기 →</div>
                   </Link>
                 ))}
               </div>
-            </div>
-          </section>
+            </section>
+          )}
+        </article>
+
+        {/* 이 상품 후기 */}
+        {reviews.length > 0 && (
+          <Reviews
+            plain
+            reviews={reviews}
+            title="실제 수강생 후기"
+            subtitle={
+              p.id === "school"
+                ? "네이버 지도에 올라온 근력학교 수강생 후기입니다."
+                : "스마트스토어에 올라온 케틀벨 원데이 클래스 후기입니다."
+            }
+          />
         )}
-      </article>
 
-      {/* 이 상품 후기 */}
-      {reviews.length > 0 && (
-        <Reviews
-          reviews={reviews}
-          title="실제 수강생 후기"
-          subtitle={
-            p.id === "school"
-              ? "네이버 지도에 올라온 근력학교 수강생 후기입니다."
-              : "스마트스토어에 올라온 케틀벨 원데이 클래스 후기입니다."
-          }
-        />
-      )}
-
-      {/* CTA */}
-      <section className="cta-band">
-        <div className="wrap">
+        {/* CTA */}
+        <section className="sg-cta">
           <h2>뭘 골라야 할지 모르겠다면</h2>
           <p>원리부터 잡으면 길이 보입니다. 칼럼 몇 편이면 방향이 잡혀요.</p>
-          <div className="sns">
-            <Link
-              href="/columns"
-              style={{ background: "#fff", color: "#004AAD", borderColor: "#fff" }}
-            >
+          <div className="btns">
+            <Link className="sg-btn sg-btn-primary" href="/columns">
               체력향상 칼럼 보기 →
             </Link>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       <Footer />
     </>

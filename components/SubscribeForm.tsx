@@ -30,8 +30,9 @@ export default function SubscribeForm() {
 
   return (
     <section className="subscribe-band">
-      <div className="wrap subscribe-inner">
+      <div className="subscribe-inner">
         <div>
+          <div className="lab mono">▍NEWSLETTER</div>
           <h2>새 칼럼을 메일로 받아보세요</h2>
           <p>직장인 체력 원리를 한 편씩 보내드립니다.</p>
         </div>

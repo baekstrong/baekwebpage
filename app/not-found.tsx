@@ -10,31 +10,28 @@ export default function NotFound() {
   return (
     <>
       <Header />
-      <section className="page-head">
-        <div className="wrap">
-          <span className="eyebrow">404</span>
+      <div className="sg">
+        <section className="sg-pagehead">
+          <div className="lab mono">▍404</div>
           <h1>페이지를 찾을 수 없습니다</h1>
           <p>
             주소가 바뀌었거나 삭제된 페이지일 수 있어요. 아래에서 이어가 보세요.
           </p>
-        </div>
-      </section>
-      <section className="block">
-        <div
-          className="wrap"
-          style={{ display: "flex", gap: 16, flexWrap: "wrap" }}
-        >
-          <Link className="btn btn-primary" href="/">
-            홈으로
-          </Link>
-          <Link className="btn btn-ghost" href="/columns">
-            칼럼 보기
-          </Link>
-          <Link className="btn btn-ghost" href="/quiz">
-            자가진단 하기
-          </Link>
-        </div>
-      </section>
+        </section>
+        <section className="sg-body">
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <Link className="sg-btn sg-btn-primary" href="/">
+              홈으로
+            </Link>
+            <Link className="sg-btn sg-btn-ghost" href="/columns">
+              칼럼 보기
+            </Link>
+            <Link className="sg-btn sg-btn-ghost" href="/quiz">
+              자가진단 하기
+            </Link>
+          </div>
+        </section>
+      </div>
       <Footer />
     </>
   );

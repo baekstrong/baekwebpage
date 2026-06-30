@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { font-family: 'Pretendard', -apple-system, sans-serif; background:#fff; color:#15171C; -webkit-font-smoothing:antialiased; }
+  .mono { font-family: 'Space Mono', monospace; }
+  @media (max-width: 860px){
+    .wrap { padding-left:22px !important; padding-right:22px !important; }
+    .nav-links { display:none !important; }
+    .h1 { font-size:40px !important; }
+    .qbtns { grid-template-columns:1fr !important; }
+    .footrow { flex-direction:column !important; gap:28px !important; align-items:flex-start !important; }
+    .footrow > div:last-child { align-items:flex-start !important; text-align:left !important; flex-direction:row !important; flex-wrap:wrap !important; gap:18px !important; }
+  }
+</style>
+</helmet>
+
+<div style="max-width:1180px; margin:0 auto;">
+  <!-- nav -->
+  <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; padding:20px 32px; border-bottom:1.5px solid #15171C; position:sticky; top:0; background:rgba(255,255,255,0.9); backdrop-filter:saturate(180%) blur(12px); z-index:20;">
+    <a href="홈페이지 - Structured Grid.dc.html" style="display:flex; align-items:center; gap:11px; text-decoration:none; color:inherit;">
+      <img src="https://masterbaek.vercel.app/logo.png" alt="백관장 로고" style="width:28px; height:28px; border-radius:5px; object-fit:cover;">
+      <span style="font-size:15px; font-weight:800; letter-spacing:-0.01em;">백관장의 체력 상담소</span>
+    </a>
+    <div class="nav-links" style="display:flex; align-items:center; gap:28px; font-size:13px; color:#2D3039; font-weight:600;">
+      <a href="칼럼.dc.html" style="text-decoration:none; color:inherit;" style-hover="color:#0A4DB0;">칼럼</a>
+      <a href="상품.dc.html" style="text-decoration:none; color:inherit;" style-hover="color:#0A4DB0;">상품</a>
+      <a href="자가진단.dc.html" style="text-decoration:none; color:#0A4DB0;">자가진단</a>
+      <a href="소개.dc.html" style="text-decoration:none; color:inherit;" style-hover="color:#0A4DB0;">소개</a>
+      <a href="문의.dc.html" style="text-decoration:none; color:inherit;" style-hover="color:#0A4DB0;">문의</a>
+      <a href="자가진단.dc.html" class="mono" style="border-bottom:2px solid #0A4DB0; padding-bottom:3px; color:#0A4DB0; text-decoration:none;">자가진단 →</a>
+    </div>
+  </div>
+
+  <!-- header -->
+  <div class="wrap" style="padding:64px 32px 8px;">
+    <div class="mono" style="font-size:12px; letter-spacing:0.16em; color:#0A4DB0; margin-bottom:18px;">▍1-MIN CHECK</div>
+    <h1 class="h1" style="font-size:56px; font-weight:800; letter-spacing:-0.03em; line-height:1.04; margin:0 0 18px;">1분 체력 자가진단</h1>
+    <p style="font-size:18px; line-height:1.6; color:#565B63; max-width:600px; margin:0;">7개 질문에 답하면 지금 내 직장인 체력 상태와, 다음에 뭘 하면 좋을지 알려드려요.</p>
+  </div>
+
+  <!-- quiz card -->
+  <div class="wrap" style="padding:36px 32px 72px;">
+    <div style="border:1.5px solid #15171C; min-height:420px; display:flex; flex-direction:column;">
+
+      <!-- progress bar -->
+      <sc-if value="{{ showProgress }}" hint-placeholder-val="{{ false }}">
+        <div style="height:6px; background:#EEF3FB;">
+          <div style="height:6px; background:#0A4DB0; width:{{ progressPct }}; transition:width .35s ease;"></div>
+        </div>
+      </sc-if>
+
+      <!-- intro -->
+      <sc-if value="{{ isIntro }}" hint-placeholder-val="{{ true }}">
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:64px 48px; text-align:center;">
+          <div class="mono" style="font-size:13px; letter-spacing:0.14em; color:#888E97; margin-bottom:20px;">7 QUESTIONS · 약 1분</div>
+          <h2 style="font-size:38px; font-weight:800; letter-spacing:-0.025em; line-height:1.15; margin:0 0 18px;">혹시 나도<br>직장인 체력 저하일까?</h2>
+          <p style="font-size:17px; line-height:1.65; color:#565B63; max-width:480px; margin:0 auto 36px;">의지나 나이 탓이라고 넘기지 마세요. 몸이 보내는 신호를 점검하고, 가장 빠른 다음 한 걸음을 받아보세요.</p>
+          <div style="display:flex; justify-content:center;">
+            <div onClick="{{ start }}" style="background:#0A4DB0; color:#fff; font-size:16px; font-weight:600; padding:17px 40px; cursor:pointer;" style-hover="background:#083C8C;">진단 시작하기 →</div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- question -->
+      <sc-if value="{{ isQuestion }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:56px 48px;">
+          <div class="mono" style="font-size:13px; letter-spacing:0.12em; color:#0A4DB0; margin-bottom:24px;">질문 {{ qNum }} / {{ qTotal }}</div>
+          <h2 style="font-size:32px; font-weight:800; letter-spacing:-0.02em; line-height:1.3; margin:0 0 40px; max-width:680px;">{{ qText }}</h2>
+          <div class="qbtns" style="display:grid; grid-template-columns:1fr 1fr; gap:14px; max-width:560px;">
+            <div onClick="{{ answerYes }}" style="border:1.5px solid #15171C; padding:22px; font-size:18px; font-weight:700; text-align:center; cursor:pointer;" style-hover="background:#0A4DB0; color:#fff; border-color:#0A4DB0;">네, 그래요</div>
+            <div onClick="{{ answerNo }}" style="border:1.5px solid #E4E9F0; padding:22px; font-size:18px; font-weight:700; text-align:center; color:#565B63; cursor:pointer;" style-hover="background:#15171C; color:#fff; border-color:#15171C;">아니요</div>
+          </div>
+          <div style="margin-top:32px;">
+            <span onClick="{{ back }}" style="font-size:14px; color:#888E97; cursor:pointer;" style-hover="color:#15171C;">← 이전 질문</span>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- result -->
+      <sc-if value="{{ isResult }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:56px 48px;">
+          <div class="mono" style="font-size:13px; letter-spacing:0.14em; color:#0A4DB0; margin-bottom:14px;">진단 결과 · {{ scoreText }}</div>
+          <div style="display:inline-flex; align-self:flex-start; align-items:baseline; gap:14px; margin-bottom:20px;">
+            <span style="font-size:18px; font-weight:700; padding:6px 14px; background:{{ tagBg }}; color:{{ tagColor }};">{{ tier }}</span>
+          </div>
+          <h2 style="font-size:36px; font-weight:800; letter-spacing:-0.025em; line-height:1.2; margin:0 0 16px; max-width:700px;">{{ resultTitle }}</h2>
+          <p style="font-size:17px; line-height:1.7; color:#565B63; max-width:620px; margin:0 0 32px;">{{ resultDesc }}</p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="{{ ctaHref }}" style="background:#0A4DB0; color:#fff; font-size:15px; font-weight:600; padding:15px 28px; text-decoration:none;" style-hover="background:#083C8C;">{{ ctaText }}</a>
+            <span onClick="{{ restart }}" style="border:1.5px solid #15171C; color:#15171C; font-size:15px; font-weight:600; padding:15px 28px; cursor:pointer;" style-hover="background:#15171C; color:#fff;">다시 진단하기</span>
+          </div>
+        </div>
+      </sc-if>
+
+    </div>
+    <p class="mono" style="font-size:12px; color:#A6ABB3; text-align:center; margin:20px 0 0;">* 의학적 진단이 아닌, 생활 습관 기반 자가 점검입니다.</p>
+  </div>
+
+  <!-- footer -->
+  <div class="wrap footrow" style="padding:72px 32px; display:flex; align-items:flex-end; justify-content:space-between; border-top:1.5px solid #15171C; flex-wrap:wrap; gap:28px;">
+    <div>
+      <h2 style="font-size:44px; font-weight:800; letter-spacing:-0.025em; margin:0 0 12px;">직장인에게, <span style="color:#0A4DB0;">힘을!</span></h2>
+      <p style="font-size:15px; color:#696F78; margin:0 0 22px;">유튜브 · 스레드 · 인스타 · 틱톡에서 매일 만나요.</p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a href="칼럼.dc.html" style="background:#0A4DB0; color:#fff; font-size:14px; font-weight:600; padding:13px 22px; text-decoration:none;" style-hover="background:#083C8C;">체력향상 칼럼 보기 →</a>
+        <a href="상품.dc.html" style="border:1.5px solid #15171C; color:#15171C; font-size:14px; font-weight:600; padding:13px 22px; text-decoration:none;" style-hover="background:#15171C; color:#fff;">상품 둘러보기</a>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:8px; align-items:flex-end; text-align:right; font-size:14px; font-weight:600; color:#15171C;">
+      <a href="https://www.youtube.com/@easystrength101" target="_blank" style="color:inherit; text-decoration:none;" style-hover="color:#0A4DB0;">YouTube</a>
+      <a href="https://www.instagram.com/easystrength101/" target="_blank" style="color:inherit; text-decoration:none;" style-hover="color:#0A4DB0;">Instagram</a>
+      <a href="https://www.threads.com/@easystrength101" target="_blank" style="color:inherit; text-decoration:none;" style-hover="color:#0A4DB0;">Threads · TikTok</a>
+      <a href="https://blog.naver.com/qortmdejr123" target="_blank" style="color:inherit; text-decoration:none;" style-hover="color:#0A4DB0;">블로그</a>
+    </div>
+  </div>
+  <div class="wrap" style="padding:26px 32px; border-top:1px solid #E4E9F0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+    <div style="display:flex; align-items:center; gap:10px;"><img src="https://masterbaek.vercel.app/logo.png" alt="" style="width:22px; height:22px; border-radius:5px; object-fit:cover;"><span class="mono" style="font-size:12px; color:#888E97;">qortmdejr123@naver.com</span></div>
+    <span class="mono" style="font-size:12px; color:#A6ABB3;">© 2026 백관장의 체력 상담소. All rights reserved.</span>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { idx: -1, yes: 0, done: false };
+
+  QUESTIONS = [
+    '알람을 여러 개 맞춰놔도 아침에 일어나기가 너무 힘들다.',
+    '점심 먹고 나면 오후 3시쯤 기절할 것 같은 식곤증이 몰려온다.',
+    '퇴근하면 운동은커녕 소파에 쓰러져 스마트폰만 보다 잠든다.',
+    '주말 내내 쉬어도 월요일 아침엔 여전히 피곤하다.',
+    '계단 몇 층만 올라가도 숨이 차고 다리가 무겁다.',
+    '운동을 시작해도 보통 3일을 넘기지 못하고 그만둔다.',
+    '하루에 앉아서 일하는 시간이 8시간 이상이다.',
+  ];
+
+  start = () => this.setState({ idx: 0, yes: 0, done: false });
+  back = () => this.setState(s => s.idx > 0 ? { idx: s.idx - 1 } : { idx: -1 });
+  restart = () => this.setState({ idx: -1, yes: 0, done: false });
+
+  answer(v) {
+    this.setState(s => {
+      const yes = s.yes + (v ? 1 : 0);
+      if (s.idx + 1 >= this.QUESTIONS.length) return { yes, done: true };
+      return { yes, idx: s.idx + 1 };
+    });
+  }
+
+  tierFor(yes) {
+    if (yes <= 2) return {
+      tier: '양호', tagBg: '#EAF4EC', tagColor: '#1F7A3D',
+      title: '아직은 버틸 만합니다',
+      desc: '기본 체력은 남아 있어요. 다만 직장인의 몸은 가만두면 천천히 무너집니다. 지금 습관을 유지·강화하는 게 핵심이에요. 칼럼으로 원리를 잡아두면 흔들리지 않습니다.',
+      ctaText: '체력향상 칼럼 보기 →', ctaHref: '칼럼.dc.html',
+    };
+    if (yes <= 4) return {
+      tier: '주의', tagBg: '#FFF3E6', tagColor: '#B5621A',
+      title: '직장인 체력 저하가 시작됐습니다',
+      desc: '몸이 보내는 신호가 쌓이고 있어요. 의지 문제가 아니라 방법을 몰랐을 뿐입니다. 9,900원 전자책으로 가장 빠르고 저렴하게 첫걸음을 떼보세요.',
+      ctaText: '전자책으로 시작하기 →', ctaHref: '상품.dc.html',
+    };
+    return {
+      tier: '위험', tagBg: '#FBEAEA', tagColor: '#C0392B',
+      title: '지금 방향을 제대로 잡아야 합니다',
+      desc: '혼자서는 헛고생하기 쉬운 단계예요. 원데이 클래스로 기본기와 방향을 잡거나, 근력학교 정규수업으로 일상 체력을 되살리는 걸 권합니다.',
+      ctaText: '수업 보러가기 →', ctaHref: '상품.dc.html',
+    };
+  }
+
+  renderVals() {
+    const { idx, yes, done } = this.state;
+    const total = this.QUESTIONS.length;
+    const isIntro = idx < 0 && !done;
+    const isQuestion = idx >= 0 && !done;
+    const isResult = done;
+    const t = this.tierFor(yes);
+    const answeredForBar = isResult ? total : Math.max(0, idx);
+    return {
+      isIntro, isQuestion, isResult,
+      showProgress: isQuestion || isResult,
+      progressPct: Math.round((answeredForBar / total) * 100) + '%',
+      qNum: Math.min(idx + 1, total),
+      qTotal: total,
+      qText: this.QUESTIONS[Math.max(0, Math.min(idx, total - 1))],
+      start: this.start,
+      back: this.back,
+      restart: this.restart,
+      answerYes: () => this.answer(true),
+      answerNo: () => this.answer(false),
+      scoreText: '해당 ' + yes + ' / ' + total,
+      tier: t.tier, tagBg: t.tagBg, tagColor: t.tagColor,
+      resultTitle: t.title, resultDesc: t.desc,
+      ctaText: t.ctaText, ctaHref: t.ctaHref,
+    };
+  }
+}
+</script>
+</body>
+</html>
