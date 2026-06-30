@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans_KR } from "next/font/google";
+import { IBM_Plex_Sans_KR, Space_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import JsonLd from "@/components/JsonLd";
 import "./globals.css";
@@ -9,6 +9,14 @@ const ibmPlexSansKR = IBM_Plex_Sans_KR({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-ibm",
+});
+
+// 모노 라벨/넘버링(01·02·03·캡션) — Structured Grid 에디토리얼 룩
+const spaceMono = Space_Mono({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono",
 });
 
 const SITE = "https://masterbaek.vercel.app";
@@ -84,7 +92,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" className={ibmPlexSansKR.variable}>
+    <html lang="ko" className={`${ibmPlexSansKR.variable} ${spaceMono.variable}`}>
       <body>
         <JsonLd data={siteJsonLd} />
         {children}

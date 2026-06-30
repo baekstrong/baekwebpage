@@ -44,8 +44,8 @@ export default function Header({ active }: Props) {
             문의
           </Link>
         </nav>
-        <Link className="nav-cta" href="/quiz">
-          체력 자가진단 →
+        <Link className="nav-cta mono" href="/quiz">
+          자가진단 →
         </Link>
       </div>
     </header>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { font-family: 'Pretendard', -apple-system, sans-serif; background:#fff; color:#15171C; -webkit-font-smoothing:antialiased; }
+  .mono { font-family: 'Space Mono', monospace; }
+  @media (max-width: 860px){
+    .wrap { padding-left:22px !important; padding-right:22px !important; }
+    .split2 { grid-template-columns:1fr !important; }
+    .split2 > .splitborder { border-right:none !important; border-bottom:1px solid #E4E9F0 !important; }
+    .grid3 { grid-template-columns:1fr !important; }
+    .statrow { flex-direction:column !important; }
+    .statrow > div { border-right:none !important; border-bottom:1px solid #E4E9F0 !important; }
+    .h1 { font-size:54px !important; }
+    .heroimg { min-height:300px !important; }
+    .footrow { flex-direction:column !important; gap:28px !important; align-items:flex-start !important; }
+    .footrow > div:last-child { text-align:left !important; flex-direction:row !important; flex-wrap:wrap !important; gap:18px !important; }
+    .nav-links { display:none !important; }
+    .revcell { border-right:none !important; border-bottom:1px solid #E4E9F0 !important; padding:24px 0 !important; }
+  }
+</style>
+</helmet>
+
+<div style="max-width:1180px; margin:0 auto;">
+  <!-- nav -->
+  <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; padding:20px 32px; border-bottom:1.5px solid #15171C; position:sticky; top:0; background:rgba(255,255,255,0.9); backdrop-filter:saturate(180%) blur(12px); z-index:20;">
+    <div style="display:flex; align-items:center; gap:11px;">
+      <img src="https://masterbaek.vercel.app/logo.png" alt="백관장 로고" style="width:28px; height:28px; border-radius:5px; object-fit:cover;">
+      <span style="font-size:15px; font-weight:800; letter-spacing:-0.01em;">백관장의 체력 상담소</span>
+    </div>
+    <div class="nav-links" style="display:flex; align-items:center; gap:28px; font-size:13px; color:#2D3039; font-weight:600;">
+      <span style="cursor:pointer;" style-hover="color:#0A4DB0;">칼럼</span>
+      <span style="cursor:pointer;" style-hover="color:#0A4DB0;">상품</span>
+      <span style="cursor:pointer;" style-hover="color:#0A4DB0;">자가진단</span>
+      <span style="cursor:pointer;" style-hover="color:#0A4DB0;">소개</span>
+      <span style="cursor:pointer;" style-hover="color:#0A4DB0;">문의</span>
+      <span class="mono" style="border-bottom:2px solid #0A4DB0; padding-bottom:3px; color:#0A4DB0; cursor:pointer;">자가진단 →</span>
+    </div>
+  </div>
+
+  <!-- hero split -->
+  <div class="split2" style="display:grid; grid-template-columns:1.15fr 0.85fr; border-bottom:1px solid #E4E9F0;">
+    <div class="wrap splitborder" style="padding:84px 32px 68px; border-right:1px solid #E4E9F0;">
+      <div class="mono" style="font-size:12px; letter-spacing:0.16em; color:#888E97; margin-bottom:30px;">직장인 체력 상담소 · 6.2만 구독</div>
+      <h1 class="h1" style="font-size:84px; line-height:1.0; font-weight:800; letter-spacing:-0.035em; margin:0 0 28px;">직장인에게,<br><span style="color:#0A4DB0;">힘을!</span></h1>
+      <p style="font-size:19px; line-height:1.65; color:#565B63; max-width:460px; margin:0 0 36px;">퇴근하면 소파에 쓰러지는 하루. 의지가 약해서가 아닙니다. 바쁜 직장인에게 <b style="color:#15171C;">맞는 방법</b>을 몰랐을 뿐이에요.</p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <div style="background:#0A4DB0; color:#fff; font-size:15px; font-weight:600; padding:15px 26px; cursor:pointer;" style-hover="background:#083C8C;">1분 체력 자가진단 →</div>
+        <div style="background:transparent; color:#15171C; font-size:15px; font-weight:600; padding:15px 26px; border:1.5px solid #15171C; cursor:pointer;" style-hover="background:#15171C; color:#fff;">체력향상 칼럼 보기</div>
+      </div>
+    </div>
+    <div style="position:relative; min-height:440px;">
+      <img class="heroimg" src="https://masterbaek.vercel.app/profile.jpg" alt="백관장 백승덕" style="width:100%; height:100%; min-height:440px; object-fit:cover; display:block;">
+      <div class="mono" style="position:absolute; left:0; bottom:0; background:#15171C; color:#fff; font-size:11px; letter-spacing:0.1em; padding:10px 16px;">BAEK SEUNG-DEOK · 백관장</div>
+    </div>
+  </div>
+
+  <!-- stat strip -->
+  <div class="statrow" style="display:flex; border-bottom:1px solid #E4E9F0;">
+    <div class="wrap" style="flex:1; padding:28px 32px; border-right:1px solid #E4E9F0; display:flex; align-items:baseline; gap:12px;"><span class="mono" style="font-size:12px; color:#888E97;">01</span><span style="font-size:32px; font-weight:800; letter-spacing:-0.02em;">6.2만</span><span style="font-size:13px; color:#888E97;">유튜브 구독자</span></div>
+    <div class="wrap" style="flex:1; padding:28px 32px; border-right:1px solid #E4E9F0; display:flex; align-items:baseline; gap:12px;"><span class="mono" style="font-size:12px; color:#888E97;">02</span><span style="font-size:32px; font-weight:800; letter-spacing:-0.02em;">534+</span><span style="font-size:13px; color:#888E97;">유튜브 영상</span></div>
+    <div class="wrap" style="flex:1; padding:28px 32px; display:flex; align-items:baseline; gap:12px;"><span class="mono" style="font-size:12px; color:#888E97;">03</span><span style="font-size:32px; font-weight:800; letter-spacing:-0.02em;">18편</span><span style="font-size:13px; color:#888E97;">체력 칼럼</span></div>
+  </div>
+
+  <!-- pain -->
+  <div class="split2 wrap" style="display:grid; grid-template-columns:0.8fr 1.2fr; padding:84px 32px; gap:48px;">
+    <div>
+      <div class="mono" style="font-size:12px; letter-spacing:0.16em; color:#0A4DB0; margin-bottom:16px;">▍혹시, 당신의 하루</div>
+      <h2 style="font-size:36px; font-weight:800; letter-spacing:-0.02em; line-height:1.18; margin:0;">혹시 이런 하루를 보내고 계신가요?</h2>
+    </div>
+    <div>
+      <div style="display:grid; grid-template-columns:30px 1fr; gap:16px; padding:18px 0; border-top:1.5px solid #15171C; font-size:17px; color:#2D3039;"><span class="mono" style="color:#0A4DB0; font-weight:700;">01</span><span>알람을 다섯 개 맞춰놔도 아침이면 몸이 천근만근이다.</span></div>
+      <div style="display:grid; grid-template-columns:30px 1fr; gap:16px; padding:18px 0; border-top:1px solid #E4E9F0; font-size:17px; color:#2D3039;"><span class="mono" style="color:#0A4DB0; font-weight:700;">02</span><span>점심 먹고 나면 오후 3시쯤 기절할 것 같은 식곤증이 몰려온다.</span></div>
+      <div style="display:grid; grid-template-columns:30px 1fr; gap:16px; padding:18px 0; border-top:1px solid #E4E9F0; font-size:17px; color:#2D3039;"><span class="mono" style="color:#0A4DB0; font-weight:700;">03</span><span>퇴근하면 소파에 누워 스마트폰만 보다가 잠든다.</span></div>
+      <div style="display:grid; grid-template-columns:30px 1fr; gap:16px; padding:18px 0; border-top:1px solid #E4E9F0; border-bottom:1px solid #E4E9F0; font-size:17px; color:#2D3039;"><span class="mono" style="color:#0A4DB0; font-weight:700;">04</span><span>주말 내내 쉬어도 월요일 아침엔 여전히 피곤하다.</span></div>
+      <p style="font-size:18px; line-height:1.6; color:#2D3039; margin:28px 0 0; font-weight:600;">“다들 이렇게 살지” 싶겠지만, 정상이 아닙니다. 하루 8시간 앉아 일하는 몸이라면 당연한 결과입니다. <span style="color:#0A4DB0;">그리고 바꿀 수 있습니다.</span></p>
+    </div>
+  </div>
+
+  <!-- story -->
+  <div class="split2" style="display:grid; grid-template-columns:1fr 1fr; border-top:1px solid #E4E9F0; border-bottom:1px solid #E4E9F0;">
+    <div class="wrap splitborder" style="padding:72px 32px; border-right:1px solid #E4E9F0;">
+      <div class="mono" style="font-size:12px; letter-spacing:0.16em; color:#0A4DB0; margin-bottom:16px;">▍왜 '직장인' 체력인가</div>
+      <h2 style="font-size:34px; font-weight:800; letter-spacing:-0.02em; line-height:1.18; margin:0 0 24px;">저도 야근하던 현대중공업 직장인이었습니다.</h2>
+      <p style="font-size:16px; line-height:1.7; color:#565B63; margin:0 0 18px;">바벨은 누구보다 무겁게 들었는데, 계단 5층만 올라도 숨이 찼습니다. 그때 알았어요. 무거운 걸 드는 힘과, 일상을 버티는 체력은 전혀 다른 겁니다.</p>
+      <p style="font-size:16px; line-height:1.7; color:#565B63; margin:0 0 24px;">헬스장에서 몇 시간씩 보낼 필요 없이, 바쁜 일상 속에서도 강해지는 원리. 그게 백관장의 체력 상담소입니다.</p>
+      <div style="font-size:15px; font-weight:700;">— 백관장 (백승덕) <span style="color:#0A4DB0; font-weight:600; cursor:pointer;">　이야기 전체 보기 →</span></div>
+    </div>
+    <img class="heroimg" src="https://masterbaek.vercel.app/hyundai-id.jpg" alt="현대중공업 사원증" style="width:100%; height:100%; min-height:420px; object-fit:cover;">
+  </div>
+
+  <!-- columns -->
+  <div class="wrap" style="padding:84px 32px;">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:40px; flex-wrap:wrap; gap:16px;">
+      <div>
+        <div class="mono" style="font-size:12px; letter-spacing:0.16em; color:#0A4DB0; margin-bottom:14px;">▍CONTENT</div>
+        <h2 style="font-size:36px; font-weight:800; letter-spacing:-0.02em; margin:0 0 8px;">체력향상 칼럼</h2>
+        <p style="font-size:16px; color:#565B63; margin:0;">막막할 때 가장 먼저 읽을 글. 직장인에게 실제로 통한 체력 원리만 모았습니다.</p>
+      </div>
+      <span class="mono" style="font-size:13px; color:#0A4DB0; font-weight:700; cursor:pointer;">칼럼 전체보기 →</span>
+    </div>
+    <div class="grid3" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; border-top:1.5px solid #15171C;">
+      <div style="padding:28px 26px 28px 0; border-right:1px solid #E4E9F0; cursor:pointer;" style-hover="background:#F6F8FB;">
+        <span class="mono" style="font-size:12px; color:#888E97;">01</span>
+        <h3 style="font-size:20px; font-weight:800; letter-spacing:-0.01em; line-height:1.3; margin:14px 0 12px;">과거로 돌아가도 다시 할 운동 3가지</h3>
+        <p style="font-size:14px; line-height:1.65; color:#565B63; margin:0 0 18px;">운동 20년 중 10년을 헛돌았던 제가, 수만 번 삽질 끝에 추린 진짜 기본 세 가지.</p>
+        <span style="font-size:13px; font-weight:700; color:#0A4DB0;">읽어보기 →</span>
+      </div>
+      <div style="padding:28px 26px; border-right:1px solid #E4E9F0; cursor:pointer;" style-hover="background:#F6F8FB;">
+        <span class="mono" style="font-size:12px; color:#888E97;">02</span>
+        <h3 style="font-size:20px; font-weight:800; letter-spacing:-0.01em; line-height:1.3; margin:14px 0 12px;">운동 전에 하지 말아야 할 것들</h3>
+        <p style="font-size:14px; line-height:1.65; color:#565B63; margin:0 0 18px;">단백질도 세트 수도 아니다. 같은 시간 운동하고도 효과가 갈리는 건 운동 전 습관 때문이다.</p>
+        <span style="font-size:13px; font-weight:700; color:#0A4DB0;">읽어보기 →</span>
+      </div>
+      <div style="padding:28px 0 28px 26px; cursor:pointer;" style-hover="background:#F6F8FB;">
+        <span class="mono" style="font-size:12px; color:#888E97;">03</span>
+        <h3 style="font-size:20px; font-weight:800; letter-spacing:-0.01em; line-height:1.3; margin:14px 0 12px;">헬스장에서 근육에 힘 주지 마세요</h3>
+        <p style="font-size:14px; line-height:1.65; color:#565B63; margin:0 0 18px;">“가슴에 힘 줘야지” 생각하며 운동했다면 거꾸로 한 겁니다. 자극보다 동작이 먼저인 이유.</p>
+        <span style="font-size:13px; font-weight:700; color:#0A4DB0;">읽어보기 →</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- reviews -->
+  <div class="wrap" style="padding:0 32px 84px;">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:40px; flex-wrap:wrap; gap:16px;">
+      <div><div class="mono" style="font-size:12px; letter-spacing:0.16em; color:#0A4DB0; margin-bottom:14px;">▍REVIEWS</div><h2 style="font-size:36px; font-weight:800; letter-spacing:-0.02em; margin:0;">이미 수백 명이 강해졌습니다</h2></div>
+      <span class="mono" style="font-size:13px; color:#888E97;">네이버지도 · 스마트스토어 실제 후기</span>
+    </div>
+    <div class="grid3" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; border-top:1.5px solid #15171C;">
+      <div class="revcell" style="padding:28px 26px 28px 0; border-right:1px solid #E4E9F0;"><div style="color:#0A4DB0; font-size:15px; margin-bottom:14px;">★★★★★</div><p style="font-size:15px; line-height:1.65; color:#2D3039; margin:0 0 18px;">필라테스·발레·헬스 PT 안 해본 게 없는데, 근력학교가 인생에서 가장 만족하며 가장 길게 다니는 센터예요. 근육으로만 7kg 증량했어요!</p><div class="mono" style="font-size:12px; color:#888E97;">Aur**** · 근력학교 3년차</div></div>
+      <div class="revcell" style="padding:28px 26px; border-right:1px solid #E4E9F0;"><div style="color:#0A4DB0; font-size:15px; margin-bottom:14px;">★★★★★</div><p style="font-size:15px; line-height:1.65; color:#2D3039; margin:0 0 18px;">저질체력이라 인생 반 포기하고 살았는데, 다니면서 몸과 마음의 변화를 느껴요. 좀비에서 사람 만들어주셔서 감사합니다.</p><div class="mono" style="font-size:12px; color:#888E97;">lim**** · 헬스 3개월차 직장인</div></div>
+      <div class="revcell" style="padding:28px 0 28px 26px;"><div style="color:#0A4DB0; font-size:15px; margin-bottom:14px;">★★★★★</div><p style="font-size:15px; line-height:1.65; color:#2D3039; margin:0 0 18px;">관장님이 꼼꼼히 자세를 봐주시고, 대학원 시작하고 생긴 허리통증이 교정운동으로 지금은 완전히 없어졌습니다.</p><div class="mono" style="font-size:12px; color:#888E97;">박** · 대학원생</div></div>
+    </div>
+  </div>
+
+  <!-- products -->
+  <div style="background:#15171C; color:#fff;">
+    <div class="wrap" style="padding:84px 32px;">
+      <div class="mono" style="font-size:12px; letter-spacing:0.16em; color:#6AA4FF; margin-bottom:16px;">▍PRODUCTS</div>
+      <h2 style="font-size:36px; font-weight:800; letter-spacing:-0.02em; margin:0 0 40px;">백관장의 상품 <span style="font-size:18px; color:#8A8F98; font-weight:500;">— 읽고 끝내지 마세요. 직접 강해지세요.</span></h2>
+      <div style="border-top:1px solid #333;">
+        <div style="display:grid; grid-template-columns:50px 1fr auto; gap:24px; align-items:center; padding:26px 0; border-bottom:1px solid #333; cursor:pointer;" style-hover="background:#1D1F25;"><span class="mono" style="font-size:14px; color:#6AA4FF;">01</span><div><div style="font-size:21px; font-weight:800;">전자책 《케틀벨 체력 솔루션》</div><div style="font-size:14px; color:#959AA3; margin-top:5px;">직장인을 위한 케틀벨 체력 솔루션. 9,900원으로 시작하는 첫걸음.</div></div><div style="font-size:14px; font-weight:700; color:#6AA4FF;">구매하기 →</div></div>
+        <div style="display:grid; grid-template-columns:50px 1fr auto; gap:24px; align-items:center; padding:26px 0; border-bottom:1px solid #333; cursor:pointer;" style-hover="background:#1D1F25;"><span class="mono" style="font-size:14px; color:#6AA4FF;">02</span><div><div style="font-size:21px; font-weight:800;">케틀벨 원데이 클래스</div><div style="font-size:14px; color:#959AA3; margin-top:5px;">케틀벨 기본기와 방향을 하루 3시간 만에. 초보 환영 소규모 수업.</div></div><div style="font-size:14px; font-weight:700; color:#6AA4FF;">예약 일정 보기 →</div></div>
+        <div style="display:grid; grid-template-columns:50px 1fr auto; gap:24px; align-items:center; padding:26px 0; border-bottom:1px solid #333; cursor:pointer;" style-hover="background:#1D1F25;"><span class="mono" style="font-size:14px; color:#6AA4FF;">03</span><div><div style="font-size:21px; font-weight:800;">근력학교 정규수업</div><div style="font-size:14px; color:#959AA3; margin-top:5px;">직장인 체력 향상 3단계 프로세스. 주 2회 3시간 정규 과정.</div></div><div style="font-size:14px; font-weight:700; color:#6AA4FF;">신청하기 →</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer cta -->
+  <div class="wrap footrow" style="padding:72px 32px; display:flex; align-items:flex-end; justify-content:space-between; border-top:1.5px solid #15171C;">
+    <div>
+      <h2 style="font-size:44px; font-weight:800; letter-spacing:-0.025em; margin:0 0 12px;">직장인에게, <span style="color:#0A4DB0;">힘을!</span></h2>
+      <p style="font-size:15px; color:#696F78; margin:0 0 22px;">유튜브 · 스레드 · 인스타 · 틱톡에서 매일 만나요.</p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <div style="background:#0A4DB0; color:#fff; font-size:14px; font-weight:600; padding:13px 22px; cursor:pointer;" style-hover="background:#083C8C;">1분 체력 자가진단 →</div>
+        <div style="border:1.5px solid #15171C; color:#15171C; font-size:14px; font-weight:600; padding:13px 22px; cursor:pointer;" style-hover="background:#15171C; color:#fff;">상품 둘러보기</div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:8px; text-align:right; font-size:14px; font-weight:600; color:#15171C;"><span style="cursor:pointer;">YouTube</span><span style="cursor:pointer;">Instagram</span><span style="cursor:pointer;">Threads · TikTok</span><span style="cursor:pointer;">블로그</span></div>
+  </div>
+
+  <div class="wrap" style="padding:26px 32px; border-top:1px solid #E4E9F0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+    <div style="display:flex; align-items:center; gap:10px;"><img src="https://masterbaek.vercel.app/logo.png" alt="" style="width:22px; height:22px; border-radius:5px; object-fit:cover;"><span class="mono" style="font-size:12px; color:#888E97;">qortmdejr123@naver.com</span></div>
+    <span class="mono" style="font-size:12px; color:#A6ABB3;">© 2026 백관장의 체력 상담소. All rights reserved.</span>
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>
