@@ -650,3 +650,19 @@ a.sg-pcard:hover{border-color:var(--sg-ink);background:var(--sg-surf2);}
   .sg-sechead{margin-bottom:28px;}
   .sg-sechead h2{font-size:26px;}
 }
+
+/* ── 홈 저자·신뢰 스트립 (저서·근력학교 이사·유튜브) ── */
+.sg-author{display:flex;gap:28px;align-items:center;padding:36px 32px;
+  border-top:1.5px solid var(--sg-ink);border-bottom:1px solid var(--sg-line);transition:background .18s ease;}
+a.sg-author:hover{background:var(--sg-surf2);}
+.sg-author-cover{width:112px;aspect-ratio:63/95;flex:none;border:1px solid var(--sg-line);
+  background:#f4f4f4 center/cover no-repeat;}
+.sg-author-txt{display:flex;flex-direction:column;}
+.sg-author-txt .lab{font-size:12px;letter-spacing:.16em;color:var(--sg-blue);margin-bottom:12px;}
+.sg-author-title{font-size:20px;font-weight:800;letter-spacing:-.01em;margin:0 0 8px;}
+.sg-author-title span{font-size:14px;font-weight:500;color:var(--sg-muted);}
+.sg-author-cred{font-size:13px;color:var(--sg-body);margin:0 0 14px;}
+.sg-author .read{font-size:13px;font-weight:700;color:var(--sg-blue);}
+@media(max-width:860px){
+  .sg-author{flex-direction:column;align-items:flex-start;gap:20px;padding:32px 22px;}
+}

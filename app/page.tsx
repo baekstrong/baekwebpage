@@ -142,13 +142,33 @@ export default async function Home() {
               원리. 그게 백관장의 체력 상담소입니다.
             </p>
             <div className="sg-sign">
-              — 백관장 (백승덕)
+              — 백관장 (백승덕) · 근력학교 이사
               <Link href="/about">이야기 전체 보기 →</Link>
             </div>
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/hyundai-id.jpg" alt="현대중공업 사원증" />
         </section>
+
+        {/* AUTHORITY — 저자·신뢰 스트립 */}
+        <Link className="sg-author" href="/products/book-survival">
+          <span
+            className="sg-author-cover"
+            role="img"
+            aria-label="《최소한의 생존 체력 운동》 표지"
+            style={{ backgroundImage: "url(/book-cover.jpg)" }}
+          />
+          <span className="sg-author-txt">
+            <span className="lab mono">▍저서 · 백관장은</span>
+            <span className="sg-author-title">
+              《최소한의 생존 체력 운동》 <span>— 정식 출간 저서</span>
+            </span>
+            <span className="sg-author-cred mono">
+              직장인 체력 전문 코치 · 근력학교 이사 · 유튜브 6.2만 구독
+            </span>
+            <span className="read">저서 보러가기 →</span>
+          </span>
+        </Link>
 
         {/* COLUMNS */}
         <section className="sg-sect" id="columns">
