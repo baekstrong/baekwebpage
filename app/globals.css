@@ -555,6 +555,8 @@ a.sg-soonrow:hover .t{color:var(--sg-blue);}
 .sg-cform .sg-btn-primary{border:none;cursor:pointer;font-family:inherit;}
 .sg-cdone{border:1.5px solid var(--sg-ink);background:var(--sg-surf2);padding:28px;font-size:15px;line-height:1.7;color:var(--sg-strong);}
 .sg-cdone b{color:var(--sg-blue);}
+.sg-cerr{font-size:13px;color:#C0392B;margin:14px 0 0;}
+.sg-cerr b{color:var(--sg-ink);}
 
 /* ── 자가진단 (인터랙티브) ── */
 .sg-quizwrap{padding:36px 32px 72px;}

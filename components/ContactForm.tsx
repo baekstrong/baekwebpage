@@ -1,12 +1,12 @@
 "use client";
 
-// 문의 폼 — 메일 백엔드가 없어 mailto로 전송(사용자 메일앱 열림).
-// ponytail: 서버리스 메일 API(Resend 등) 붙이면 submit 핸들러만 교체.
+// 문의 폼 — Web3Forms로 즉시 이메일 전달 (qortmdejr123@naver.com 수신)
+// 키는 공개용 클라이언트 키(NEXT_PUBLIC_WEB3FORMS_KEY). 실패 시 직접 메일 안내로 폴백.
 import { useState } from "react";
 
 const TYPES = [
   "수업 문의 (원데이 · 근력학교)",
-  "상품 문의 (전자책 · 저서)",
+  "상품 문의 (전자책 · 저서 · 온라인 강의)",
   "협업 · 제휴",
   "기타",
 ];
@@ -16,24 +16,40 @@ export default function ContactForm() {
   const [email, setEmail] = useState("");
   const [type, setType] = useState(TYPES[0]);
   const [msg, setMsg] = useState("");
-  const [sent, setSent] = useState(false);
+  const [state, setState] = useState<"idle" | "loading" | "sent" | "error">(
+    "idle"
+  );
 
-  function submit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
-    const subject = `[문의] ${type} — ${name}`;
-    const body = `이름: ${name}\n이메일: ${email}\n문의 유형: ${type}\n\n${msg}`;
-    window.location.href = `mailto:qortmdejr123@naver.com?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-    setSent(true);
+    if (state === "loading") return;
+    setState("loading");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          subject: `[문의] ${type} — ${name}`,
+          from_name: "백관장 홈페이지 문의",
+          name,
+          email, // Web3Forms가 답장(reply-to) 주소로 사용
+          "문의 유형": type,
+          message: msg,
+          botcheck: false, // 스팸봇 honeypot
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      setState(res.ok && data.success ? "sent" : "error");
+    } catch {
+      setState("error");
+    }
   }
 
-  if (sent) {
+  if (state === "sent") {
     return (
       <div className="sg-cdone">
-        메일 작성 창을 열었습니다. 창이 열리지 않았다면{" "}
-        <b>qortmdejr123@naver.com</b> 으로 직접 보내주세요. 보통 1~2일 안에
-        회신드립니다.
+        문의가 접수됐습니다. 남겨주신 이메일로 보통 1~2일 안에 회신드릴게요.
       </div>
     );
   }
@@ -89,10 +105,20 @@ export default function ContactForm() {
       </div>
       <div className="send">
         <span className="mono note">* 보통 1~2일 내 회신드립니다.</span>
-        <button className="sg-btn sg-btn-primary" type="submit">
-          문의 보내기 →
+        <button
+          className="sg-btn sg-btn-primary"
+          type="submit"
+          disabled={state === "loading"}
+        >
+          {state === "loading" ? "보내는 중…" : "문의 보내기 →"}
         </button>
       </div>
+      {state === "error" && (
+        <p className="sg-cerr">
+          전송에 실패했습니다. 잠시 후 다시 시도하시거나{" "}
+          <b>qortmdejr123@naver.com</b> 으로 직접 보내주세요.
+        </p>
+      )}
     </form>
   );
 }
