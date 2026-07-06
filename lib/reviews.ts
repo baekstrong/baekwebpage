@@ -81,15 +81,6 @@ export const REVIEWS: Review[] = [
   },
   {
     quote:
-      "PT 50분에 6~8만원인 요즘, 4주·매회 2시간 이상 수업을 받았습니다. 3대 운동 자세·기술·호흡은 물론, 개인별 비대칭과 약한 부분을 보완하는 재활 운동까지 배운 게 매우 좋았습니다.",
-    author: "prof****",
-    meta: "케틀벨 원데이",
-    source: "스마트스토어",
-    product: "oneday",
-    tag: "가성비",
-  },
-  {
-    quote:
       "유튜브를 보며 혼자 운동했지만 계속 손목에 통증이 생겨 처음으로 그룹 PT를 받아봤습니다. 확실히 오프라인에서 배우는 게 다르네요.",
     author: "hang****",
     meta: "케틀벨 원데이",
@@ -131,7 +122,7 @@ export function getFeaturedReviews(): Review[] {
   return [
     REVIEWS[3], // Aur — 3년차
     REVIEWS[1], // lim — 좀비에서 사람
-    REVIEWS[7], // prof — 가성비
+    REVIEWS[10], // choi — 강력 추천 (원데이)
     REVIEWS[4], // 박 — 통증 개선
     REVIEWS[6], // merc — 직장인
     REVIEWS[2], // tim — 자세 교정

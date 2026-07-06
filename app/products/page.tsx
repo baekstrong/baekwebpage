@@ -20,21 +20,6 @@ const CODE: Record<string, string> = {
 
 function Card({ p, strong }: { p: Product; strong?: boolean }) {
   const code = CODE[p.id] ?? "";
-
-  if (!p.available) {
-    return (
-      <div className="sg-pcard muted">
-        <div className="sg-pcard-top">
-          <span className="sg-pcode mono">{code}</span>
-          <span className="sg-pprice soon mono">준비 중</span>
-        </div>
-        <h3>{p.name}</h3>
-        <p>{p.short}</p>
-        <span className="more">출시 예정</span>
-      </div>
-    );
-  }
-
   const sched = !p.price.trim().startsWith("₩");
   return (
     <Link className={`sg-pcard${strong ? " strong" : ""}`} href={`/products/${p.id}`}>
@@ -52,9 +37,12 @@ function Card({ p, strong }: { p: Product; strong?: boolean }) {
 }
 
 export default function Products() {
-  const online = PRODUCTS.filter((p) => p.category === "online");
-  const offline = PRODUCTS.filter((p) => p.category === "offline");
-  const goods = PRODUCTS.find((p) => p.category === "upcoming");
+  // 판매 중인 상품만 카드로, 준비 중인 상품은 전부 하단 행 리스트로
+  const online = PRODUCTS.filter((p) => p.category === "online" && p.available);
+  const offline = PRODUCTS.filter(
+    (p) => p.category === "offline" && p.available
+  );
+  const upcoming = PRODUCTS.filter((p) => !p.available);
 
   return (
     <>
@@ -111,18 +99,20 @@ export default function Products() {
           </div>
         </section>
 
-        {/* 추후 출시 */}
-        {goods && (
+        {/* 준비 중 · 출시 예정 */}
+        {upcoming.length > 0 && (
           <section style={{ padding: "0 32px 56px" }}>
-            <div className="sg-seclabel mono">▍추후 출시 예정</div>
-            <div className="sg-soonrow">
-              <span className="code mono">{CODE[goods.id]}</span>
-              <div>
-                <div className="t">{goods.name}</div>
-                <div className="d">{goods.short}</div>
-              </div>
-              <span className="s mono">출시 예정</span>
-            </div>
+            <div className="sg-seclabel mono">▍준비 중 · 출시 예정</div>
+            {upcoming.map((p) => (
+              <Link className="sg-soonrow" key={p.id} href={`/products/${p.id}`}>
+                <span className="code mono">{CODE[p.id]}</span>
+                <div>
+                  <div className="t">{p.name}</div>
+                  <div className="d">{p.short}</div>
+                </div>
+                <span className="s mono">출시 알림 받기 →</span>
+              </Link>
+            ))}
           </section>
         )}
 

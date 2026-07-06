@@ -41,7 +41,7 @@ function tierFor(yes: number): Tier {
       title: "직장인 체력 저하가 시작됐습니다",
       desc: "몸이 보내는 신호가 쌓이고 있어요. 의지 문제가 아니라 방법을 몰랐을 뿐입니다. 9,900원 전자책으로 가장 빠르고 저렴하게 첫걸음을 떼보세요.",
       ctaText: "전자책으로 시작하기 →",
-      ctaHref: "/products",
+      ctaHref: "/products/ebook",
     };
   return {
     tier: "위험",
@@ -57,6 +57,8 @@ export default function Quiz() {
   const [idx, setIdx] = useState(-1);
   const [yes, setYes] = useState(0);
   const [done, setDone] = useState(false);
+  const [email, setEmail] = useState("");
+  const [sub, setSub] = useState<"idle" | "loading" | "done" | "error">("idle");
 
   const total = QUESTIONS.length;
   const isIntro = idx < 0 && !done;
@@ -79,6 +81,24 @@ export default function Quiz() {
     setYes(0);
     setDone(false);
   };
+
+  // 진단 결과 이메일 수집 — /api/subscribe(스티비 더블옵트인) 재사용, 등급을 체력유형으로 저장
+  async function subscribe(e: React.FormEvent) {
+    e.preventDefault();
+    if (sub === "loading") return;
+    setSub("loading");
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, fitnessType: tierFor(yes).tier }),
+      });
+      const data = await res.json().catch(() => ({}));
+      setSub(res.ok && data.ok ? "done" : "error");
+    } catch {
+      setSub("error");
+    }
+  }
 
   const answeredForBar = isResult ? total : Math.max(0, idx);
   const pct = Math.round((answeredForBar / total) * 100);
@@ -150,6 +170,44 @@ export default function Quiz() {
               <button className="sg-qrestart" onClick={restart}>
                 다시 진단하기
               </button>
+            </div>
+
+            <div className="sg-qsub">
+              {sub === "done" ? (
+                <p className="sg-qsub-done">
+                  확인 메일을 보냈습니다. 메일함에서 &lsquo;구독 확인&rsquo;을
+                  눌러주시면 완료됩니다.
+                </p>
+              ) : (
+                <>
+                  <p className="sg-qsub-lead">
+                    지금 이 결과에서 시작하는 <b>체력 레터</b>를 이메일로
+                    보내드릴게요.
+                  </p>
+                  <form className="quiz-email" onSubmit={subscribe}>
+                    <input
+                      type="email"
+                      required
+                      placeholder="이메일 주소"
+                      aria-label="이메일 주소"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <button
+                      className="btn btn-primary"
+                      type="submit"
+                      disabled={sub === "loading"}
+                    >
+                      {sub === "loading" ? "신청 중…" : "체력 레터 받기"}
+                    </button>
+                  </form>
+                  {sub === "error" && (
+                    <p className="sg-qsub-err">
+                      구독 신청에 실패했습니다. 잠시 후 다시 시도해주세요.
+                    </p>
+                  )}
+                </>
+              )}
             </div>
           </div>
         )}

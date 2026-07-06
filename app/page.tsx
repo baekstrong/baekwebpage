@@ -61,15 +61,16 @@ export default async function Home() {
         {/* HERO */}
         <section className="sg-hero">
           <div className="sg-hero-l">
-            <div className="sg-eyebrow mono">직장인 체력 상담소 · 6.2만 구독</div>
+            <div className="sg-eyebrow mono">직장인 체력 전문 · 유튜브 6.2만 구독</div>
             <h1 className="sg-h1">
               직장인에게,
               <br />
               <span className="b">힘을!</span>
             </h1>
             <p className="sg-lead">
-              퇴근하면 소파에 쓰러지는 하루. 의지가 약해서가 아닙니다. 바쁜
-              직장인에게 <b>맞는 방법</b>을 몰랐을 뿐이에요.
+              퇴근하면 소파에 쓰러지는 건 의지가 아니라 체력 문제입니다. 그리고
+              체력은 바쁜 직장인에게 <b>맞는 방법</b>만 알면 다시 만들 수
+              있어요.
             </p>
             <div className="sg-btns">
               <Link className="sg-btn sg-btn-primary" href="/quiz">
@@ -90,17 +91,17 @@ export default async function Home() {
         {/* STAT STRIP */}
         <section className="sg-stats">
           <div className="sg-stat">
-            <span className="i mono">01</span>
+            <span className="i mono" aria-hidden="true">01</span>
             <span className="n">6.2만</span>
             <span className="l">유튜브 구독자</span>
           </div>
           <div className="sg-stat">
-            <span className="i mono">02</span>
+            <span className="i mono" aria-hidden="true">02</span>
             <span className="n">534+</span>
             <span className="l">유튜브 영상</span>
           </div>
           <div className="sg-stat">
-            <span className="i mono">03</span>
+            <span className="i mono" aria-hidden="true">03</span>
             <span className="n">{cols.length}편</span>
             <span className="l">체력 칼럼</span>
           </div>
@@ -109,19 +110,19 @@ export default async function Home() {
         {/* PAIN */}
         <section className="sg-pain">
           <div>
-            <div className="sg-label mono">▍혹시, 당신의 하루</div>
+            <div className="sg-label mono">▍당신의 하루</div>
             <h2 className="sg-h2">혹시 이런 하루를 보내고 계신가요?</h2>
           </div>
           <div>
             {PAIN.map((line, i) => (
               <div className="sg-painrow" key={i}>
-                <span className="num mono">{n(i)}</span>
+                <span className="num mono" aria-hidden="true">{n(i)}</span>
                 <span>{line}</span>
               </div>
             ))}
             <p className="sg-painend">
-              &ldquo;다들 이렇게 살지&rdquo; 싶겠지만, 정상이 아닙니다. 하루
-              8시간 앉아 일하는 몸이라면 당연한 결과입니다.{" "}
+              &ldquo;다들 이렇게 살지&rdquo; 싶겠지만, 하루 8시간 앉아 일하는
+              몸이라면 당연한 결과입니다. 당신 탓이 아니에요.{" "}
               <span className="b">그리고 바꿀 수 있습니다.</span>
             </p>
           </div>
@@ -191,7 +192,7 @@ export default async function Home() {
             <div className="sg-3">
               {homeCols.map((c, i) => (
                 <Link className="sg-col" key={c.id} href={`/columns/${c.slug}`}>
-                  <span className="i mono">{n(i)}</span>
+                  <span className="i mono" aria-hidden="true">{n(i)}</span>
                   <h3>{c.title}</h3>
                   <p>{c.summary}</p>
                   <span className="read">읽어보기 →</span>
@@ -238,7 +239,7 @@ export default async function Home() {
             <div className="sg-plist">
               {PRODUCTS.map((p) => (
                 <Link className="sg-prow" key={p.href} href={p.href}>
-                  <span className="i mono">{p.i}</span>
+                  <span className="i mono" aria-hidden="true">{p.i}</span>
                   <div>
                     <div className="t">{p.t}</div>
                     <div className="d">{p.d}</div>

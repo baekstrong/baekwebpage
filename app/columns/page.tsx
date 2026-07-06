@@ -13,7 +13,9 @@ export const metadata = {
 
 export default async function Columns() {
   const cols = await getColumns();
-  const feature = cols.find((c) => c.grade === "A") ?? null;
+  // 추천 칼럼: 주 단위로 전체 칼럼을 자동 순환 (ISR 재생성 시 반영)
+  const week = Math.floor(Date.now() / 604_800_000);
+  const feature = cols.length > 0 ? cols[week % cols.length] : null;
   const rest = cols.filter((c) => c.id !== feature?.id);
 
   return (

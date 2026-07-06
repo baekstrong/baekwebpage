@@ -6,6 +6,14 @@ import { PRODUCTS, getProduct } from "@/lib/products";
 import Reviews from "@/components/Reviews";
 import { getReviewsByProduct } from "@/lib/reviews";
 import JsonLd from "@/components/JsonLd";
+import SubscribeForm from "@/components/SubscribeForm";
+
+// 오프라인 수업 공통 장소 (근력학교 고대점)
+const PLACE = {
+  name: "근력학교 고대점",
+  addr: "서울 성북구 고려대로24길 47, 3층 (안암역 3번 출구 도보 4분)",
+  mapUrl: "https://naver.me/xiqDtNuY",
+};
 
 // 가격 문자열 → KRW 숫자 ("₩ 9,900"→9900 / "주 2회 31만…"→310000 / "준비 중"→null)
 function priceKRW(price: string): number | null {
@@ -136,11 +144,21 @@ export default async function ProductDetail({
                 </>
               ) : (
                 <>
-                  <Link className="sg-btn sg-btn-ghost sg-pbuy-btn" href="/#sns">
+                  <a className="sg-btn sg-btn-ghost sg-pbuy-btn" href="#notify">
                     {p.buyLabel} →
-                  </Link>
-                  <p className="sg-pbuy-note">출시되면 가장 먼저 알려드릴게요.</p>
+                  </a>
+                  <p className="sg-pbuy-note">
+                    아래에 이메일을 남기면 가장 먼저 소식을 보내드립니다.
+                  </p>
                 </>
+              )}
+              {p.category === "offline" && (
+                <p className="sg-pbuy-note">
+                  장소: {PLACE.name} — {PLACE.addr}{" "}
+                  <a href={PLACE.mapUrl} target="_blank" rel="noopener noreferrer">
+                    네이버 지도 →
+                  </a>
+                </p>
               )}
             </aside>
           </div>
@@ -165,6 +183,15 @@ export default async function ProductDetail({
             </section>
           )}
         </article>
+
+        {/* 준비중 상품: 출시 알림 = 뉴스레터 구독 */}
+        {!p.available && (
+          <SubscribeForm
+            id="notify"
+            title="출시 소식을 메일로 받아보세요"
+            desc="새 상품이 나오면 구독자에게 가장 먼저 알려드립니다."
+          />
+        )}
 
         {/* 이 상품 후기 */}
         {reviews.length > 0 && (

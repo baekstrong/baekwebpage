@@ -480,9 +480,12 @@ a.sg-pcard:hover{border-color:var(--sg-ink);background:var(--sg-surf2);}
 .sg-pick p{font-size:15px;color:var(--sg-body);margin:0;}
 .sg-pick .btns{display:flex;gap:10px;flex-wrap:wrap;}
 
-/* 굿즈 출시예정 행 */
+/* 출시예정 행 */
 .sg-soonrow{display:flex;align-items:center;gap:20px;
   border-top:1px solid var(--sg-line);border-bottom:1px solid var(--sg-line);padding:24px 0;}
+.sg-soonrow + .sg-soonrow{border-top:none;}
+a.sg-soonrow{text-decoration:none;color:inherit;}
+a.sg-soonrow:hover .t{color:var(--sg-blue);}
 .sg-soonrow .code{font-size:11px;letter-spacing:.12em;color:var(--sg-faint);}
 .sg-soonrow .t{font-size:17px;font-weight:700;color:var(--sg-muted);}
 .sg-soonrow .d{font-size:14px;color:#959AA3;margin-top:3px;}
@@ -590,6 +593,13 @@ a.sg-pcard:hover{border-color:var(--sg-ink);background:var(--sg-surf2);}
   font-weight:600;padding:15px 28px;cursor:pointer;font-family:inherit;transition:.15s ease;}
 .sg-qrestart:hover{background:var(--sg-ink);color:#fff;}
 .sg-qdisc{font-size:12px;color:var(--sg-faint);text-align:center;margin:20px 0 0;}
+/* 진단 결과 이메일 수집 */
+.sg-qsub{margin-top:36px;padding-top:28px;border-top:1px solid var(--sg-line);max-width:620px;}
+.sg-qsub-lead{font-size:15px;color:var(--sg-body);margin:0 0 4px;}
+.sg-qsub-lead b{color:var(--sg-ink);}
+.sg-qsub .quiz-email{margin:14px 0 0;}
+.sg-qsub-done{font-size:15px;color:var(--sg-ink);margin:0;}
+.sg-qsub-err{font-size:13px;color:#C0392B;margin:10px 0 0;}
 
 /* 시안 정합 반응형 */
 @media (max-width:860px){

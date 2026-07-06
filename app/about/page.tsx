@@ -58,13 +58,13 @@ export default function About() {
         {/* 문제 · 공감 */}
         <section className="sg-pain">
           <div>
-            <div className="sg-label mono">▍혹시, 당신의 하루</div>
+            <div className="sg-label mono">▍당신의 하루</div>
             <h2 className="sg-h2">혹시 이런 하루를 보내고 계신가요?</h2>
           </div>
           <div>
             {PAIN.map((line, i) => (
               <div className="sg-painrow" key={i}>
-                <span className="num mono">{String(i + 1).padStart(2, "0")}</span>
+                <span className="num mono" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
                 <span>{line}</span>
               </div>
             ))}
@@ -153,7 +153,7 @@ export default function About() {
             있고 뭐가 시간 낭비인지 뼈저리게 알고 있어요.
           </p>
           <p>
-            그렇게 근력학교에서 IT 개발자, 은행원, 공무원, 영업사원, 의대 교수,
+            그렇게 제가 수강생들을 가르치고 있는 근력학교에서 IT 개발자, 은행원, 공무원, 영업사원, 의대 교수,
             회계사까지 <b>수백 명의 직장인</b>을 만났습니다. 직종은 달라도 하는
             말은 놀랍도록 비슷했어요. &ldquo;퇴근하면 기력이 없어요.&rdquo;
             &ldquo;헬스장 등록하고 세 번 가고 안 가게 됐어요.&rdquo; 거기서 하나의
@@ -199,7 +199,7 @@ export default function About() {
             </div>
             <div>
               <div className="n">2권</div>
-              <div className="l">정식 출간 저서</div>
+              <div className="l">저서 — 정식 출간 1 · 전자책 1</div>
             </div>
           </div>
           <div className="sg-books">
