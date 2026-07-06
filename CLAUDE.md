@@ -181,7 +181,7 @@ SNS 유입(유튜브·스레드·인스타·틱톡) → 칼럼으로 설득 → 
 - [x] Notion Integration 토큰 발급 + DB 연결 (완료, `.env.local` 저장)
 - [x] **P2 빌드 검증 → 로컬 확인 → 커밋** (빌드 7/7 성공, 로컬·라이브 렌더 검증)
 - [x] **Vercel 환경변수 등록 + 배포** (vercel CLI로 link·env·배포. 라이브 검증 통과)
-- [x] **문의 폼 실전송 — B안(Web3Forms) 완료 (2026-07-06)** — 키 발급(사용자)→`.env.local`+Vercel(`NEXT_PUBLIC_WEB3FORMS_KEY`, Prod·Dev)→`ContactForm.tsx` mailto→Web3Forms POST 교체·배포. 번들에 키 임베드 확인. 무료 월 250건, Web3Forms엔 저장 안 됨(메일 전달만 — 네이버 메일함이 기록). ⏳ **사용자 최종 확인 1건 남음**: /contact 에서 테스트 문의 1건 제출→네이버 메일 도착 확인. ※ Tally API는 제출 API 없음(2026-07-06 확인) → 커스텀 폼 유지엔 Web3Forms가 유일했음. 도메인 구매 후 Resend+브랜드 메일 이전 예정
+- [x] **문의 폼 실전송 — B안(Web3Forms) 완료 (2026-07-06)** — 키 발급(사용자)→`.env.local`+Vercel(`NEXT_PUBLIC_WEB3FORMS_KEY`, Prod·Dev)→`ContactForm.tsx` mailto→Web3Forms POST 교체·배포. 번들에 키 임베드 확인. 무료 월 250건, Web3Forms엔 저장 안 됨(메일 전달만 — 네이버 메일함이 기록). ✅ **종단 테스트 완료**: 첫 테스트는 키 발급 이메일(지메일)로 수신 → Web3Forms에서 수신 이메일을 네이버로 교체(키 동일, 코드 무변경) → **네이버 도착 확인(2026-07-06)**. ※ Tally API는 제출 API 없음(2026-07-06 확인) → 커스텀 폼 유지엔 Web3Forms가 유일했음. 도메인 구매 후 Resend+브랜드 메일 이전 예정
 - [ ] **뉴스레터 의견 폼 = Tally로 제작** (사용자 예정) — 스티비 레터 메일 안에 Tally 폼 링크 삽입 용도. 사이트 코드 작업 불필요
 - [ ] ⏭️ **실제 칼럼 가공(marketingteamforbaek 에이전트로) → 발행** (다음 1순위)
 - [ ] (선택) 토큰 재발급 — 보안 TODO
