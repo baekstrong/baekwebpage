@@ -162,7 +162,7 @@ export default async function Home() {
           <span className="sg-author-txt">
             <span className="lab mono">▍저서 · 백관장은</span>
             <span className="sg-author-title">
-              《최소한의 생존 체력 운동》 <span>— 정식 출간 저서</span>
+              《최소한의 생존 체력 운동》 <span>— 교보문고 건강 분야 1위</span>
             </span>
             <span className="sg-author-cred mono">
               직장인 체력 전문 코치 · 근력학교 이사 · 유튜브 6.2만 구독
