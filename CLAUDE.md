@@ -181,7 +181,7 @@ SNS 유입(유튜브·스레드·인스타·틱톡) → 칼럼으로 설득 → 
 - [x] Notion Integration 토큰 발급 + DB 연결 (완료, `.env.local` 저장)
 - [x] **P2 빌드 검증 → 로컬 확인 → 커밋** (빌드 7/7 성공, 로컬·라이브 렌더 검증)
 - [x] **Vercel 환경변수 등록 + 배포** (vercel CLI로 link·env·배포. 라이브 검증 통과)
-- [ ] ⏭️ **문의 폼 Web3Forms 연동 (사용자: 이번 주말 2026-07-11/12 예정, 1안 확정)** — ① 사용자: web3forms.com에서 이메일(qortmdejr123@naver.com)로 access key 발급(1분) 후 전달 ② 코드: `components/ContactForm.tsx`의 mailto submit → Web3Forms POST 교체 + key는 `NEXT_PUBLIC_WEB3FORMS_KEY` 환경변수(로컬+Vercel). 무료 월 250건. ※ 도메인 구매 후엔 Resend+브랜드 메일로 이전 예정
+- [ ] ⏭️ **문의 폼 실전송 (사용자: 이번 주말 2026-07-11/12 예정 — A/B안 중 결정 대기)** — **A안(Tally 통일)**: 문의 폼을 Tally iframe 임베드로 교체. 문의+뉴스레터 의견이 Tally 대시보드 한곳에 저장·알림·CSV. 단점: 폼 영역만 Tally 스타일(디자인 통일 깨짐, 커스텀 CSS는 Pro). ※ Tally API는 응답 조회/삭제만 있고 생성(제출) API 없음(2026-07-06 공식 문서 확인) → 커스텀 폼 유지하며 Tally로 쏘기는 불가. **B안(분리, 추천)**: 문의=Web3Forms(현 디자인 유지 — 사용자가 web3forms.com에서 키 발급 후 전달 → `ContactForm.tsx` mailto→POST 교체 + `NEXT_PUBLIC_WEB3FORMS_KEY` 환경변수, 무료 월 250건), 뉴스레터 의견=Tally 링크(스티비 메일 안에 삽입). ※ 도메인 구매 후엔 Resend+브랜드 메일로 이전 예정
 - [ ] ⏭️ **실제 칼럼 가공(marketingteamforbaek 에이전트로) → 발행** (다음 1순위)
 - [ ] (선택) 토큰 재발급 — 보안 TODO
 - [ ] P3 상품 상세 / P6 자가진단 데모 / 문항·결과문 초안
