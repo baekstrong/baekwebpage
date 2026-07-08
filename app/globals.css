@@ -63,13 +63,19 @@ section.block{padding:88px 0;}
 .prod-bg{background:var(--gray10);}
 
 /* ── 뉴스레터 입력(.quiz-email) — SubscribeForm 재사용 ── */
-.quiz-email{display:flex;gap:10px;margin:24px 0 8px;}
+.quiz-email{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 8px;}
 .quiz-email input{flex:1;height:52px;border:1px solid var(--gray30);padding:0 16px;font-size:15px;font-family:inherit;}
 .quiz-email input:focus{outline:none;border-color:var(--navy);}
 .quiz-email .btn{height:52px;white-space:nowrap;}
 @media(max-width:600px){
   .quiz-email{flex-direction:column;}
 }
+
+/* ── 개인정보 수집 동의 체크박스(만14세+동의) — 이메일 폼 공용 ── */
+.consent{display:flex;align-items:flex-start;gap:8px;flex-basis:100%;width:100%;
+  margin-top:4px;font-size:13px;line-height:1.5;color:inherit;opacity:.85;text-align:left;cursor:pointer;}
+.consent input{margin-top:2px;width:16px;height:16px;flex-shrink:0;accent-color:var(--sg-blue);}
+.consent a{color:inherit;text-decoration:underline;font-weight:600;}
 
 /* ── Footer (하단 바 — 로고+이메일 / 저작권) ── */
 footer{background:#fff;border-top:1px solid var(--sg-line);}

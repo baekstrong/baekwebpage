@@ -200,6 +200,16 @@ export default function Quiz() {
                     >
                       {sub === "loading" ? "신청 중…" : "체력 레터 받기"}
                     </button>
+                    <label className="consent">
+                      <input type="checkbox" required />
+                      <span>
+                        만 14세 이상이며,{" "}
+                        <a href="/privacy" target="_blank" rel="noopener noreferrer">
+                          개인정보 수집·이용
+                        </a>
+                        에 동의합니다.
+                      </span>
+                    </label>
                   </form>
                   {sub === "error" && (
                     <p className="sg-qsub-err">
