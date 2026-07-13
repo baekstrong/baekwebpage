@@ -13,6 +13,7 @@ const SNS = {
   threads: "https://www.threads.com/@easystrength101",
   tiktok: "https://www.tiktok.com/@easystrength101",
   blog: "https://blog.naver.com/qortmdejr123",
+  cafe: "https://cafe.naver.com/easystrength",
 };
 
 // 다크 상품 리스트 — 실제 상품 상세 라우트로 연결
@@ -292,6 +293,9 @@ export default async function Home() {
             </span>
             <a href={SNS.blog} target="_blank" rel="noopener noreferrer">
               블로그
+            </a>
+            <a href={SNS.cafe} target="_blank" rel="noopener noreferrer">
+              네이버 카페
             </a>
           </div>
         </section>

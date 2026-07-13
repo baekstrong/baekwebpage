@@ -26,6 +26,7 @@ const SNS = [
   "https://www.threads.com/@easystrength101",
   "https://www.tiktok.com/@easystrength101",
   "https://blog.naver.com/qortmdejr123",
+  "https://cafe.naver.com/easystrength",
 ];
 
 // 전역 구조화 데이터: 사이트 정체성 + 운영자(E-E-A-T)
