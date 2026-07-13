@@ -16,7 +16,7 @@ const SNS = [
   { name: "Threads", url: "https://www.threads.com/@easystrength101", handle: "@easystrength101" },
   { name: "TikTok", url: "https://www.tiktok.com/@easystrength101", handle: "@easystrength101" },
   { name: "블로그", url: "https://blog.naver.com/qortmdejr123", handle: "blog.naver.com" },
-  { name: "네이버 카페", url: "https://cafe.naver.com/easystrength", handle: "cafe.naver.com/easystrength" },
+  { name: "근력의 민족 (네이버 카페)", url: "https://cafe.naver.com/easystrength", handle: "cafe.naver.com/easystrength" },
 ];
 
 export default function Contact() {

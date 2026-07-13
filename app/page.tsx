@@ -295,7 +295,7 @@ export default async function Home() {
               블로그
             </a>
             <a href={SNS.cafe} target="_blank" rel="noopener noreferrer">
-              네이버 카페
+              근력의 민족
             </a>
           </div>
         </section>
